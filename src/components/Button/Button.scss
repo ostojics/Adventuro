@@ -1,0 +1,35 @@
+
+@import '../../scss/variables';
+
+
+.primary {
+        color: $color-black;
+        background-color: $text-primary;
+        padding: 10px 100px;
+        box-shadow: 0px 4px 20px 5px rgba(202,209,238, 0.08);
+        border-radius: 1.25rem;
+        border: none;
+        cursor: pointer;
+        transition: all .2s;
+
+        &:hover {
+            background-color: darken($text-primary, 10%);
+        }
+}
+
+.ghost {
+    color: $text-primary;
+    background-color: transparent;
+    border: 1px solid $text-primary;
+    padding: 10px 100px;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        background-color: $text-primary;
+        color: $color-black;
+    }
+}
+
+
