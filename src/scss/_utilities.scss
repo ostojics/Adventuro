@@ -1,0 +1,107 @@
+@import './variables';
+
+
+/* Text */
+.heading {
+    &-head {
+        color: $color-white;
+        font-size: 4.375rem;
+        font-family: 'Poppins', 'sans-serif';
+        font-weight: 600;
+        margin: 0;
+    }
+
+    &-primary {
+        color: $text-primary;
+        font-size: 4.375rem;
+        font-family: 'Poppins', 'sans-serif';
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.lead {
+
+    color: $text-primary;
+    font-family: 'Mulish', 'sans-serif';
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+
+    &-head {
+        color: rgba($color-white, .8);
+        font-family: 'Mulish', 'sans-serif';
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+/* Flex */
+.flex {
+    display: flex;
+
+    &-column {
+        flex-direction: column;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Margin */
+
+.m {
+
+}
+/* Margin negative */
+.mn {
+    &-1 {
+        margin: -0.625rem;
+    }
+    &-2 {
+        margin: -1.25rem;
+    }
+    &-3 {
+        margin: -1.875rem;
+    }
+
+}
+
+.mt {
+    &-1 {
+       margin-top: 0.625rem; 
+    }
+
+    &-2 {
+        margin-top: 1.25rem;
+    }
+
+    &-3 {
+        margin-top: 1.875rem;
+    }
+
+    &-4 {
+        margin-top: 2.5rem;
+    }
+
+    &-5 {
+        margin-top: 3.125rem;
+    }
+}
+
+.mnt {
+
+    &-1 {
+        margin-top: -0.625rem;
+    }
+
+    &-2 {
+        margin-top: -1.25rem;
+    }
+
+    &-3 {
+        margin-top: -1.875rem;
+    }
+}
