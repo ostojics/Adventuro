@@ -1,9 +1,12 @@
 
 .options {
-    display: flex;
+   /* display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 60%;
+    width: 60%; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 55%;
     margin: 0 auto; 
     margin-top: 4.375rem;
 }
