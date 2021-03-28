@@ -17,7 +17,16 @@
         font-family: 'Poppins', 'sans-serif';
         font-weight: 600;
         margin: 0;
+
+        &-md {
+            color: $text-primary;
+            font-size: 3rem;
+            font-family: 'Poppins', 'sans-serif';
+            font-weight: 600;
+            margin: 0;
+        }
     }
+
 }
 
 .lead {
@@ -53,20 +62,71 @@
 /* Margin */
 
 .m {
-
-}
-/* Margin negative */
-.mn {
     &-1 {
-        margin: -0.625rem;
-    }
-    &-2 {
-        margin: -1.25rem;
-    }
-    &-3 {
-        margin: -1.875rem;
-    }
+        margin: 0.625rem; 
+     }
+ 
+     &-2 {
+         margin: 1.25rem;
+     }
+ 
+     &-3 {
+         margin: 1.875rem;
+     }
+ 
+     &-4 {
+         margin: 2.5rem;
+     }
+ 
+     &-5 {
+         margin: 3.125rem;
+     }
+ 
+     &-6 {
+         margin: 3.75rem;
+     }
+ 
+     &-7 {
+         margin: 4.375rem;
+     }
+ 
+     &-8 {
+         margin: 5rem;
+     }
+}
 
+.my {
+    &-1 {
+        margin: 0.625rem 0; 
+     }
+ 
+     &-2 {
+         margin: 1.25rem 0;
+     }
+ 
+     &-3 {
+         margin: 1.875rem 0;
+     }
+ 
+     &-4 {
+         margin: 2.5rem 0;
+     }
+ 
+     &-5 {
+         margin: 3.125rem 0;
+     }
+ 
+     &-6 {
+         margin: 3.75rem 0;
+     }
+ 
+     &-7 {
+         margin: 4.375rem 0;
+     }
+ 
+     &-8 {
+         margin: 5rem 0;
+     }
 }
 
 .mt {
@@ -89,7 +149,39 @@
     &-5 {
         margin-top: 3.125rem;
     }
+
+    &-6 {
+        margin-top: 3.75rem;
+    }
+
+    &-7 {
+        margin-top: 4.375rem;
+    }
+
+    &-8 {
+        margin-top: 5rem;
+    }
 }
+
+.ml {
+    &-1 {
+        margin-left: 0.625rem;
+    }
+}
+/* Margin negative */
+.mn {
+    &-1 {
+        margin: -0.625rem;
+    }
+    &-2 {
+        margin: -1.25rem;
+    }
+    &-3 {
+        margin: -1.875rem;
+    }
+
+}
+
 
 .mnt {
 
