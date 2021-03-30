@@ -13,6 +13,7 @@ const campGroup = props => {
                     avgReview = { camp.avgReview }
                     name = { camp.name }
                     shortDescription = { camp.shortDescription }
+                    imageName = { camp.image }
                     />
                 }) }
             </div>

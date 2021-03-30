@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import './Options.scss';
 import Option from './Option/Option';
 

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import CampGroup from '../../components/CampGroup/CampGroup';
+import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
 
 class Camp extends Component {
@@ -103,7 +104,7 @@ class Camp extends Component {
                     {
                         name: 'Adventure cycling in Namibia',
                         description: `Ride through an ever-changing desert landscape beneath enormous open skies and watch the sunrise over the tallest dunes in the world.Cycle along the Skeleton Coast, the world's largest shipping graveyard and join a safari - eyes peeled for lion, elephant and rhino.Visit thousands of breeding Cape Fur Seals in their enormous reserve and stand on the highest point in the country - Spitzkoppe Mountain.`,   
-                        shortDescription: `Ride through Namibia's vast dune desert, along the Skeleton Coast, jump on a safari and sleep under the stars...`, 
+                        shortDescription: `Ride through Namibia's vast dune desert, along the Skeleton Coast, jump on a safari and sleep under the stars`, 
                         location: 'Namibia',
                         duration: '3.9.2021./10.9.2021',
                         price: '1300',
@@ -115,7 +116,7 @@ class Camp extends Component {
                     {
                         name: 'Intro to bikepacking in the Peak District',
                         description: 'Learn about bikepacking - including what kit you need and how to load your bike - and practice riding on gravel tracks.Settle down for a night in a giant tepee as you stargaze in the Dark Peak area.Visit local cafes and pubs, enjoy fire-cooked food and a tasty nightcap - buckets full of fun in just one weekend.',
-                        shortDescription: `Cycle through the best terrain the Peak District has to offer, from gravel tracks to country lanes...`,            
+                        shortDescription: `Cycle through the best terrain the Peak District has to offer, from gravel tracks to country lanes`,            
                         location: 'UK',
                         duration: '4.4.2021./5.4.2021',
                         price: '270',
@@ -133,10 +134,10 @@ class Camp extends Component {
     render() {
         return (
             <Fragment>
-                <section className =  'section-camps mb-4' >
-                    <div className =  'container' >
-                        <nav>navbar</nav>
-                        <h1 className = 'heading-primary-md text-center mt-8'>All of our camps</h1>
+                <section className='section-camps mb-4' >
+                    <div className='container' >
+                    <Navbar />
+                        <h1 className='heading-primary-md text-center mt-6'>All of our camps</h1>
                         { this.state.campsData.map(campGroup => {
                             return <CampGroup 
                             title = { campGroup.title } 
