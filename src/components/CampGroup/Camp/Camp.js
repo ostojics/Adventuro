@@ -22,6 +22,38 @@ class Camp extends Component {
 
     render() {
 
+        let image = null;
+
+        switch(this.props.imageName) {
+            case 'camp1':
+                image = camp1;
+                break;
+            case 'camp2':
+                image = camp2;
+                break;
+            case 'climb1':
+                image = climb1;
+                break;
+            case 'climb2':
+                image = climb2;
+                break;
+            case 'kayak1':
+                image = kayak1;
+                break;
+            case 'kayak2':
+                image = kayak2;
+                break;
+            case 'ride1':
+                image = ride1;
+                break;
+            case 'ride2':
+                image = ride2;
+                break;
+            default: 
+                image = camp1;
+                break;
+        }
+
         return (
             <div className = 'camp'>
                 <div className = 'camp-utils' >
@@ -37,7 +69,7 @@ class Camp extends Component {
                         <p>{ this.props.shortDescription }</p>
                     </div>
                     <div className = { 'camp-description--image' }>
-                       <img src = { ride1 } width='100%' height='100%' />
+                       <img src = { image } alt = 'camp' width='100%' height='100%' />
                     </div>
                 </div>
             </div>

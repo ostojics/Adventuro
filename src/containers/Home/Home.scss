@@ -6,32 +6,6 @@
 
 .section {
 
-    &-home {
-        background-color: $bg-color;
-        
-        .icon {
-            width: 1.875rem;
-            height: 1.875rem;
-            vertical-align: middle;
-            margin-left: 5px;
-        }
-        
-        .line {
-            margin-top: 3.125rem;
-        }
-        
-        .lead {
-            color: rgba($text-primary, .8);
-        }
-        
-        .buttons {
-            width: 40%;
-            display: flex;
-            justify-content: center;
-            margin: 4.375rem auto;
-        }
-    }
-
     &-head {
         height: 100vh;
         background-image: url('../../images/hero.jpg');
@@ -42,10 +16,10 @@
             justify-content: center;
         }
 
-        a,
-        a:link,
-        a:visited,
-        a:active {
+        .cta,
+        .cta:link,
+        .cta:visited,
+        .cta:active {
             text-decoration: none;
             font-size: 1.125rem;
             font-family: 'Mulish', 'sans-serif';
@@ -66,4 +40,27 @@
         }
     }
 
+
+}
+
+.icon {
+    width: 1.875rem;
+    height: 1.875rem;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.line {
+    margin-top: 3.125rem;
+}
+
+.lead {
+    color: rgba($text-primary, .8);
+}
+
+.buttons {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin: 4.375rem auto;
 }
