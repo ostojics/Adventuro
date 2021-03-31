@@ -1,5 +1,4 @@
 @import "../../../scss/variables";
-@import "../../../scss/utilities";
 
 .camp {
     height: 14.9375rem;
@@ -31,7 +30,6 @@
     
             .star {
                 margin-right: 0.4375rem;
-                fill: $color-red-primary;
                 width: 2rem;
                 height: 2rem;
             }
