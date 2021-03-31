@@ -20,7 +20,7 @@
 
         &-md {
             color: $text-primary;
-            font-size: 3rem;
+            font-size: 4rem;
             font-family: 'Poppins', 'sans-serif';
             font-weight: 600;
             margin: 0;
@@ -36,6 +36,7 @@
     font-size: 1.5rem;
     font-weight: 400;
     margin: 0;
+    color: rgba($text-primary, .8);
 
     &-head {
         color: rgba($color-white, .8);

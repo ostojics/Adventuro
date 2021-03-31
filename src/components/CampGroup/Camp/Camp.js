@@ -58,7 +58,7 @@ class Camp extends Component {
             <div className = 'camp'>
                 <div className = 'camp-utils' >
                     <div className = 'camp-utils--review' >
-                        <StarIcon className = { 'star' }/> 
+                        <StarIcon className='star' fill="blue"/> 
                         <span className = 'review'>{ this.props.avgReview === 0 ? 'No Reviews' : this.props.avgReview }</span>
                     </div>
                     <i onClick = { this.likeClickHandler } className={ this.state.liked ? "fas fa-heart" : "far fa-heart" }></i>
