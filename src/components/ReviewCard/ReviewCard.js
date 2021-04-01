@@ -5,10 +5,6 @@ const reviewCard = props => {
 
     return (
         <div className='review-card text-center'>
-            <h2 className='review-card--rating'>5.0</h2>
-            <div className='review-card--stars'>
-                stars
-            </div>
             <p className='review-card--text my-6'>
             “Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
             Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
