@@ -2,49 +2,13 @@
 
 .camp {
     height: 14.9375rem;
-    padding: 1.875rem;
+    padding: 20px;
     border-radius: 1.25rem;
     background-color: $bg-color-secondary;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    &-utils {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 2.5rem;
-
-        &--review {
-            display: flex;
-            align-items: center;
-
-            .review {
-                font-family: 'Mulish', 'sans-serif';
-                font-weight: 600;
-                font-size: 1.1rem;
-                color: $text-primary;
-            }
-    
-            .star {
-                margin-right: 0.4375rem;
-                width: 2rem;
-                height: 2rem;
-            }
-
-        }
-
-        i {
-            color: $color-red-primary;
-            font-size: 1.5rem;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
 
     &-description {
         display: flex;
