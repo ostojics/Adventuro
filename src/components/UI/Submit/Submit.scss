@@ -1,0 +1,14 @@
+@import '../../../scss/variables';
+
+.Submit {
+    font-family: 'Mulish', 'sans-serif';
+    font-weight: 400;
+    padding: 15px 30px;
+    font-size: 12px;
+    background-color: $text-primary;
+    color: $bg-color-secondary;
+
+    &:hover {
+        background-color: darken($text-primary, 3%);
+    }
+}

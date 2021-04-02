@@ -1,6 +1,6 @@
 
 import React, { Fragment } from 'react';
-import './Button.scss';
+import './CtaButton.scss';
 
 const button = props => {
 
