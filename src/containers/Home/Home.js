@@ -1,7 +1,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { ReactComponent as Icon } from '../../icons/discovery.svg';
-import Button from '../../components/UI/Button/Button';
+import CtaButton from '../../components/UI/CtaButton/CtaButton';
 import Options from '../../components/Options/Options';
 import Navbar from '../../components/Navbar/Navbar';
 import './Home.scss';
@@ -62,8 +62,8 @@ class Home extends Component {
                         <Options options = { this.state.options }/>
                     </div>
                     <div className='buttons'>
-                        <Button type= { 'ghost' } click = { this.categoriesSelectedHandler }>Skip</Button>
-                        <Button type= { 'primary' } click = { this.categoriesSelectedHandler }>Done</Button>
+                        <CtaButton type= { 'ghost' } click = { this.categoriesSelectedHandler }>Skip</CtaButton>
+                        <CtaButton type= { 'primary' } click = { this.categoriesSelectedHandler }>Done</CtaButton>
                     </div>
                 </section>
             </Fragment>
