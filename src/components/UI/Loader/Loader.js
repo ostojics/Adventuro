@@ -1,7 +1,7 @@
 import React from 'react';
-import './Spinner.scss';
+import './Loader.scss';
 
-const spinner = props => (
+const loader = props => (
     <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
@@ -9,4 +9,4 @@ const spinner = props => (
     </div>
 )
 
-export default spinner;
+export default loader;

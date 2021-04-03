@@ -3,6 +3,18 @@ import './FormElement.scss';
 
 const formElement = props => {
 
+    const inputClasses = ['Input'];
+    const textareaClasses = ['Textarea'];
+    if(props.touched) {
+        if(props.valid) {
+            inputClasses.push('Input-Valid');
+            textareaClasses.push('Textarea-Valid');
+        } else {
+            inputClasses.push('Input-Invalid');
+            textareaClasses.push('Textarea-Invalid');
+        }
+    }
+
     let element = null;
     switch(props.elementType) {
         case 'input':
@@ -10,7 +22,7 @@ const formElement = props => {
                     <input 
                     type="text" 
                     onChange = { props.changed } 
-                    className="Input" 
+                    className = { inputClasses.join(' ') }
                     id = { props.id } 
                     name = { props.id } 
                     placeholder = { props.placeholder }
@@ -26,7 +38,7 @@ const formElement = props => {
                     spellCheck="false" 
                     type="text" 
                     onChange = { props.changed } 
-                    className="Textarea" 
+                    className={ textareaClasses.join(' ') } 
                     id = { props.id } 
                     name = { props.name }
                     value = { props.value } />
