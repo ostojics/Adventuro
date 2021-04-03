@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FormElement from '../../components/UI/FormElement/FormElement';
 import Submit from '../../components/UI/Submit/Submit';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Loader from '../../components/UI/Loader/Loader';
 import axios from '../../axios-testimonials';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -12,31 +12,58 @@ class Testimonials extends Component {
     state = {
         form: {
             firstName: {
-                elementType: 'input',
-                label: 'First Name',
-                placeholder: 'John',
-                name: 'firstname',
-                value: ''
+                elementConfig: {
+                    elementType: 'input',
+                    label: 'First Name',
+                    placeholder: 'John',
+                    name: 'firstname',
+                },
+                validation: {
+                    isRequired: true,
+                    maxLength: 15,
+                    minLength: 3
+                },
+                value: '',
+                valid: false,
+                touched: false
             },
 
             lastName: {
-                elementType: 'input',
-                label: 'Last Name',
-                placeholder: 'Smith',
-                name: 'lastname',
-                value: ''
+                elementConfig: {
+                    elementType: 'input',
+                    label: 'Last Name',
+                    placeholder: 'Smith',
+                    name: 'lastname',
+                },
+                validation: {
+                    isRequired: true,
+                    maxLength: 15,
+                    minLength: 3
+                },
+                value: '',
+                valid: false,
+                touched: false
             },
 
             review: {
-                elementType: 'textarea',
-                label: 'Tell us about your experience',
-                placeholder: '',
-                name: 'review',
-                value: ''
+                elementConfig: {
+                    elementType: 'textarea',
+                    label: 'Tell us about your experience',
+                    placeholder: '',
+                    name: 'review',
+                },
+                validation: {
+                    isRequired: true,
+                    minLength: 10
+                },
+                value: '',
+                valid: false,
+                touched: false
             }
         },
         testimonials: [],
-        loading: false
+        loading: false,
+        formIsValid: false
     }
 
     componentDidMount() {
@@ -56,6 +83,37 @@ class Testimonials extends Component {
         })
     }
 
+    checkValidity = (value, rules) => {
+        let isValid = true;
+        if (!rules) {
+            return true;
+        }
+        
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        } 
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid
+        }
+
+      /*  if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid
+        } */
+
+        return isValid;
+    }
+
     onChangeHandler = (elementId, event) => {
         let updatedForm = {
             ...this.state.form
@@ -66,10 +124,18 @@ class Testimonials extends Component {
         }
 
         updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.touched = true;
         updatedForm[elementId] = updatedFormElement;
-        this.setState({form: updatedForm })
+
+        let formIsValid = true;
+        for (let inputIdentifier in updatedForm) {
+            formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({form: updatedForm, formIsValid: formIsValid })
     }
 
+    
     onSubmitHandler = (event) => {
         event.preventDefault();
         this.setState({ loading: true });
@@ -94,7 +160,7 @@ class Testimonials extends Component {
         axios.post( 'testimonials.json', testimonial )
             .then( response => {
                 this.setState({ loading: false });
-                this.props.history.push( '/' );
+                window.location.reload();
             } )
             .catch( error => {
                // this.setState( { loading: false } );
@@ -119,19 +185,21 @@ class Testimonials extends Component {
                         return (
                             <div className='TestimonialsForm-group'>
                                 <FormElement 
-                                elementType = { formElement.config.elementType }
-                                label = { formElement.config.label }
+                                elementType = { formElement.config.elementConfig.elementType }
+                                label = { formElement.config.elementConfig.label }
                                 key = { formElement.id }
                                 id = { formElement.id }
-                                name = { formElement.config.name }
+                                name = { formElement.config.elementConfig.name }
                                 value = { formElement.config.value }
-                                placeholder = { formElement.config.placeholder }
-                                changed = { (event) => this.onChangeHandler(formElement.id, event) } />
+                                placeholder = { formElement.config.elementConfig.placeholder }
+                                changed = { (event) => this.onChangeHandler(formElement.id, event) }
+                                valid = { formElement.config.valid }
+                                touched = { formElement.config.touched } />
                             </div>
                         )
                     }) 
                 }
-                <Submit />
+                <Submit disabled = { !this.state.formIsValid }/>
             </form>
         )
 
@@ -157,7 +225,7 @@ class Testimonials extends Component {
                         </div>
                     </div>
                     <p className='lead text-center mb-3'>Or share your own opinion</p>
-                   { this.state.loading ? <Spinner /> : form} 
+                   { this.state.loading ? <Loader /> : form } 
                 </section>
             </Fragment>
         )

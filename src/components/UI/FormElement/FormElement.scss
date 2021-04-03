@@ -18,9 +18,6 @@
     font-family: 'Mulish', 'sans-serif';
     transition: all .2s;
 
-    &:focus {
-        border-color: $color-green-primary;
-    }
 }
 
 .Textarea {
@@ -36,11 +33,7 @@
     font-family: 'Mulish', 'sans-serif';
     font-size: 1.375rem;
     transition: all .2s;
-    
-
-    &:focus {
-        border-bottom: 1px solid $color-green-primary;
-    }
+ 
 }
 
 .Submit {
@@ -57,4 +50,20 @@
     &:hover {
         background-color: darken($text-primary, 15%);
     }
+}
+
+.Input-Invalid {
+    border-color: $color-red-primary;
+}
+
+.Input-Valid {
+    border-color: $color-green-primary;
+}
+
+.Textarea-Invalid {
+    border-bottom: 1px solid $color-red-primary;
+}
+
+.Textarea-Valid {
+    border-bottom: 1px solid $color-green-primary;
 }

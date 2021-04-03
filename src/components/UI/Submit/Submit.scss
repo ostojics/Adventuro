@@ -4,11 +4,28 @@
     font-family: 'Mulish', 'sans-serif';
     font-weight: 400;
     padding: 15px 30px;
-    font-size: 12px;
+    font-size: 15px;
     background-color: $text-primary;
     color: $bg-color-secondary;
 
     &:hover {
-        background-color: darken($text-primary, 3%);
+        background-color: darken($text-primary, 15%);
     }
+
 }
+
+.Submit-disabled {
+        background-color: darken($text-primary, 15%);
+        cursor: initial;
+        font-family: 'Mulish', 'sans-serif';
+        font-weight: 400;
+        padding: 15px 30px;
+        font-size: 15px;
+        color: $bg-color-secondary;
+        border: 0;
+
+        &:hover {
+            background-color: darken($text-primary, 15%);
+        }
+}
+
