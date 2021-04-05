@@ -4,7 +4,7 @@ import './CampGroup.scss';
 const campGroup = props => {
 
     return(
-        <div className='campGroup'>
+        <div className='campGroup' onClick = { props.clicked }>
             <h3 className = 'campGroup-title'>{ props.title }</h3>
             <div className = 'campGroup-camps' >
                 { props.camps.map(camp => {
