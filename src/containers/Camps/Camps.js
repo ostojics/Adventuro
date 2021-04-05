@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom'
 import CampGroup from '../../components/CampGroup/CampGroup';
 import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
@@ -131,6 +132,10 @@ class Camp extends Component {
         ]
     }
 
+    campClickHandler = () => {
+        this.props.history.push(`${this.props.match.path}/camp`);
+    }
+
     render() {
         return (
             <Fragment>
@@ -143,6 +148,7 @@ class Camp extends Component {
                             title = { campGroup.title } 
                             key = { campGroup.id }
                             camps = { campGroup.camps }
+                            clicked = { this.campClickHandler }
                             />
                         }) }
                     </div>
