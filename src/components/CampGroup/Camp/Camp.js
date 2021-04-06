@@ -11,6 +11,7 @@ import './Camp.scss';
 
 class Camp extends Component {
 
+
     render() {
 
         let image = null;
@@ -46,14 +47,16 @@ class Camp extends Component {
         }
 
         return (
-            <div className = 'camp'>
-                <div className = 'camp-description'>
-                    <div className = { 'camp-description--text' }>
-                        <h3>{ this.props.name }</h3>
-                        <p>{ this.props.shortDescription }</p>
-                    </div>
-                    <div className = { 'camp-description--image' }>
-                       <img src = { image } alt = 'camp' width='100%' height='100%' />
+            <div onClick = { this.props.clicked }>
+                <div className = 'camp' onClick = { this.props.onCampClick }>
+                    <div className = 'camp-description'>
+                        <div className = { 'camp-description--text' }>
+                            <h3>{ this.props.name }</h3>
+                            <p>{ this.props.shortDescription }</p>
+                        </div>
+                        <div className = { 'camp-description--image' }>
+                        <img src = { image } alt = 'camp' width='100%' height='100%' />
+                        </div>
                     </div>
                 </div>
             </div>

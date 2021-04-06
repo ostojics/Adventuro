@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Route } from 'react-router-dom'
+import { connect } from 'react-redux';
 import CampGroup from '../../components/CampGroup/CampGroup';
 import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
@@ -19,8 +19,6 @@ class Camp extends Component {
                         location: 'Rugeley(UK)',
                         duration: '15.4.2021./20.4.2021.', 
                         price: '250',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'camp1',
                         id: 2
                     },
@@ -31,8 +29,6 @@ class Camp extends Component {
                         location: 'Cheshire(UK)',
                         duration: '25.4.2021./29.4.2021.', 
                         price: '350',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'camp2',
                         id: 3
                     }
@@ -49,8 +45,6 @@ class Camp extends Component {
                         location: 'UK',
                         duration: '30.4.2021./5.5.2021.', 
                         price: '650',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'climb1',
                         id: 5 
                     },
@@ -61,8 +55,6 @@ class Camp extends Component {
                         location: 'Morocco',
                         duration: '20.4.2021./30.4.2021.',
                         price: '400',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'climb2',
                         id: 6
                     }
@@ -79,8 +71,6 @@ class Camp extends Component {
                         location: 'Finland',
                         duration: '25.5.2021./30.5.2021',
                         price: '500',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'kayak1',
                         id: 8 
                     },
@@ -91,8 +81,6 @@ class Camp extends Component {
                         location: 'Sweden',
                         duration: '25.6.2021./30.6.2021',
                         price: '630',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'kayak2',
                         id: 9
                     }
@@ -109,8 +97,6 @@ class Camp extends Component {
                         location: 'Namibia',
                         duration: '3.9.2021./10.9.2021',
                         price: '1300',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'ride1',
                         id: 11
                     },
@@ -121,8 +107,6 @@ class Camp extends Component {
                         location: 'UK',
                         duration: '4.4.2021./5.4.2021',
                         price: '270',
-                        reviews: [],
-                        avgReview: 0,
                         image: 'ride2',
                         id: 12
                     }
@@ -149,6 +133,7 @@ class Camp extends Component {
                             key = { campGroup.id }
                             camps = { campGroup.camps }
                             clicked = { this.campClickHandler }
+                            onCampClick = { this.props.onCampClick }
                             />
                         }) }
                     </div>
@@ -158,4 +143,11 @@ class Camp extends Component {
     }
 }
 
-export default Camp;
+const mapDispatchToProps = dispatch => {
+
+    return {
+        onCampClick: (campDetails) => dispatch({ type: 'campClick', payload: campDetails })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Camp);
