@@ -1,6 +1,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { ReactComponent as Icon } from '../../icons/discovery.svg';
+import { connect } from 'react-redux';
 import CtaButton from '../../components/UI/CtaButton/CtaButton';
 import Options from '../../components/Options/Options';
 import Navbar from '../../components/Navbar/Navbar';
@@ -59,7 +60,10 @@ class Home extends Component {
                         <p className='lead'>So we can show you what you’ll like</p>
                     </div>
                     <div id='categories'>
-                        <Options options = { this.state.options }/>
+                        <Options 
+                        options = { this.state.options } 
+                        optionSelected = { this.props.onOptionSelect }
+                        optionDeselected = { this.props.onOptionDeselect }/>
                     </div>
                     <div className='buttons'>
                         <CtaButton type= { 'ghost' } click = { this.categoriesSelectedHandler }>Skip</CtaButton>
@@ -72,4 +76,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapDispatchToProps = dispatch => {
+    return {
+        onOptionSelect: (optionName) => dispatch({ type: 'OPTION_SELECTED', optName: optionName }),
+        onOptionDeselect: (optionName) => dispatch({type: 'OPTION_DESELECTED', optName: optionName})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Home);

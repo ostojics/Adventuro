@@ -79,7 +79,7 @@ class CampDescription extends Component {
 
 const mapStateToProps = state => {
     return {
-        details: state.campDetails
+        details: state.campDtls.campDetails
     }
 }
 

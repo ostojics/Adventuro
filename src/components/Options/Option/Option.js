@@ -54,14 +54,16 @@ class Option extends Component {
         }
     `;
 
-        return (
-            <div className = { 'option' }>
+    return (
+        <div className = { 'option' }>
+            <div onClick = { (!this.state.clicked ? () => this.props.selected(this.props.title) : () => this.props.deselected(this.props.title)) }>
                 <StyledOptionCard clicked = { this.state.clicked } onClick = { this.optionCardStyleHandler }>
                     { campIcon }
                 </StyledOptionCard>
-                <p className = { 'option-text' }>{ this.props.title }</p>
             </div>
-        )
+            <p className = { 'option-text' }>{ this.props.title }</p>
+        </div>
+    )
     }    
 }
 
