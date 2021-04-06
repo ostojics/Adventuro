@@ -4,13 +4,15 @@ const initialState = {
 
 const campDetailsReducer = (state = initialState, action) => {
     switch( action.type ) {
-        case 'campClick':
+        case 'CAMP_CLICK':
             return {
                 ...state,
                 campDetails: {
                     ...action.payload
                 }
             }
+        default:
+            return state;
     }
 }
 
