@@ -108,7 +108,9 @@ const initialState = {
         
     ],
     selectedCamps: [],
-    campsRenderData: []
+    campsRenderData: [],
+    categoriesSelected: false,
+    optionsSelectedNum: 0
 }
 
 const campSelectionReducer = (state = initialState, action) => {
@@ -120,13 +122,45 @@ const campSelectionReducer = (state = initialState, action) => {
                     campsSelection.push(group);
                 }
             }
+            const updatedOptionsSelectedNumber = state.optionsSelectedNum + 1;
             return {
                 ...state,
-                selectedCamps: campsSelection
+                selectedCamps: campsSelection,
+                optionsSelectedNum: updatedOptionsSelectedNumber
             }
 
         case 'OPTION_DESELECTED':
-            return state;
+            let currentCampsSelection = JSON.parse(JSON.stringify(state.selectedCamps));
+            let filteredCampsSelection = currentCampsSelection.filter(group => {
+                return group.title !== action.optName;
+            })
+            const updatedOptionsSelectedNum = state.optionsSelectedNum - 1;
+
+            return {
+                ...state,
+                selectedCamps: filteredCampsSelection,
+                optionsSelectedNum: updatedOptionsSelectedNum
+            }
+
+        case 'DONE_CLICK':
+            let currentSelection = JSON.parse(JSON.stringify(state.selectedCamps));
+            return {
+                ...state,
+                campsRenderData: [ ...currentSelection ],
+                selectedCamps: [],
+                categoriesSelected: true,
+                optionsSelectedNum: 0
+            }
+
+        case 'SKIP_CLICK':
+            let campsToRender = JSON.parse(JSON.stringify(state.campsData));
+            return {
+                ...state,
+                campsRenderData: [ ...campsToRender ],
+                selectedCamps: [],
+                categoriesSelected: false,
+                optionsSelectedNum: 0
+            }
 
         default: 
             return state;

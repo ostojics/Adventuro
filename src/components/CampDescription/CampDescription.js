@@ -58,7 +58,7 @@ class CampDescription extends Component {
                 <div className='container'>
                     <div className='camp-desc--image'>
                         <ArrowIcon className='camp-desc--image__icon' onClick = { this.iconClickHandler }/>
-                        <img src= { imageName } width='100%' height='100%' />
+                        <img src= { imageName } alt = 'camp' width='100%' height='100%' />
                     </div>
                     <div className='line'></div>
                     <h2 className='camp-desc--title text-center'>{ this.props.details.name }</h2>

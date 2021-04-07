@@ -62,11 +62,13 @@ class Testimonials extends Component {
             }
         },
         testimonials: [],
-        loading: false,
+        formLoading: false,
+        testimonialsLoading: false,
         formIsValid: false
     }
 
     componentDidMount() {
+        this.setState({testimonialsLoading: true})
         axios.get('/testimonials.json')
         .then(res => {
             let fetchedTestimonials = [];
@@ -76,7 +78,7 @@ class Testimonials extends Component {
                     id: key
                 })
             }
-            this.setState({testimonials: fetchedTestimonials})
+            this.setState({testimonialsLoading: false ,testimonials: fetchedTestimonials})
             console.log(this.state.testimonials)
         }).catch(error => {
             console.log(error);
@@ -138,7 +140,7 @@ class Testimonials extends Component {
     
     onSubmitHandler = (event) => {
         event.preventDefault();
-        this.setState({ loading: true });
+        this.setState({ formLoading: true });
         const formData = {};
 
         const dateObject = new Date();
@@ -159,7 +161,7 @@ class Testimonials extends Component {
 
         axios.post( 'testimonials.json', testimonial )
             .then( response => {
-                this.setState({ loading: false });
+                this.setState({ formLoading: false });
                 window.location.reload();
             } )
             .catch( error => {
@@ -203,29 +205,33 @@ class Testimonials extends Component {
             </form>
         )
 
+        let reviews = (
+            <div className='reviews'>
+                {
+                    this.state.testimonials.map(testimonial => {
+                        return (
+                        <ReviewCard 
+                        firstName = { testimonial.firstName }
+                        lastName = { testimonial.lastName }
+                        review = { testimonial.review }
+                        date = { testimonial.date }
+                        key = { testimonial.id } />
+                        )
+                    })
+                }
+            </div>
+        )
+
         return (
             <Fragment>
                 <section className='section-testimonials'>
                     <div className='container'>
                         <Navbar />
                         <h1 className='heading-primary-md text-center mt-8'>See what others think</h1>
-                        <div className='reviews'>
-                          {
-                              this.state.testimonials.map(testimonial => {
-                                  return (
-                                    <ReviewCard 
-                                    firstName = { testimonial.firstName }
-                                    lastName = { testimonial.lastName }
-                                    review = { testimonial.review }
-                                    date = { testimonial.date }
-                                    key = { testimonial.id } />
-                                  )
-                              })
-                          }
-                        </div>
+                        { this.state.testimonialsLoading ? <Loader /> : reviews }
                     </div>
                     <p className='lead text-center mb-3'>Or share your own opinion</p>
-                   { this.state.loading ? <Loader /> : form } 
+                   { this.state.formLoading ? <Loader /> : form } 
                 </section>
             </Fragment>
         )
