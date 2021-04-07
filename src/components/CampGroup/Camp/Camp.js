@@ -47,8 +47,8 @@ class Camp extends Component {
         }
 
         return (
-            <div onClick = { this.props.clicked }>
-                <div className = 'camp' onClick = { this.props.onCampClick }>
+            <div onClick = { this.props.onCampClick }>
+                <div className = 'camp' onClick = { this.props.clicked }>
                     <div className = 'camp-description'>
                         <div className = { 'camp-description--text' }>
                             <h3>{ this.props.name }</h3>

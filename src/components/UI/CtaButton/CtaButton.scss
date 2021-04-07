@@ -16,6 +16,16 @@
         &:hover {
             background-color: darken($text-primary, 10%);
         }
+
+        &:disabled {
+
+            background-color: darken($text-primary, 20%);
+
+            &:hover {
+                background-color: darken($text-primary, 20%);
+                cursor: initial;
+            }
+        }
 }
 
 .ghost {

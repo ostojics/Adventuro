@@ -66,8 +66,15 @@ class Home extends Component {
                         optionDeselected = { this.props.onOptionDeselect }/>
                     </div>
                     <div className='buttons'>
-                        <CtaButton type= { 'ghost' } click = { this.categoriesSelectedHandler }>Skip</CtaButton>
-                        <CtaButton type= { 'primary' } click = { this.categoriesSelectedHandler }>Done</CtaButton>
+                        <div onClick = { this.props.onSkipClick }>
+                            <CtaButton type= { 'ghost' } click = { this.categoriesSelectedHandler }>Skip</CtaButton>
+                        </div>
+                        <div onClick = { this.props.onDoneClick }>
+                            <CtaButton 
+                            type= { 'primary' } 
+                            click = { this.categoriesSelectedHandler }
+                            disabled = { this.props.optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
+                        </div>
                     </div>
                 </section>
             </Fragment>
@@ -76,11 +83,19 @@ class Home extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        onOptionSelect: (optionName) => dispatch({ type: 'OPTION_SELECTED', optName: optionName }),
-        onOptionDeselect: (optionName) => dispatch({type: 'OPTION_DESELECTED', optName: optionName})
+        optionsSelectedNum: state.campSlc.optionsSelectedNum
     }
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOptionSelect: (optionName) => dispatch({ type: 'OPTION_SELECTED', optName: optionName }),
+        onOptionDeselect: (optionName) => dispatch({type: 'OPTION_DESELECTED', optName: optionName}),
+        onDoneClick: () => dispatch({ type: 'DONE_CLICK' }),
+        onSkipClick: () => dispatch({ type: 'SKIP_CLICK' })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

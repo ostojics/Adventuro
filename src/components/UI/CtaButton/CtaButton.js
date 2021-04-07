@@ -6,7 +6,10 @@ const button = props => {
 
     return (
         <Fragment>
-            <button className = { props.type } onClick = { props.click }>{ props.children }</button>
+            <button 
+            className = { props.type } 
+            onClick = { props.click }
+            disabled = { props.disabled }>{ props.children }</button>
         </Fragment>
     )
 }
