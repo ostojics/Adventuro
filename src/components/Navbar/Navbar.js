@@ -19,7 +19,7 @@ const navbar = props => {
                     <NavLink className='link' to = '/testimonials' activeClassName = 'link-active'>Testimonials</NavLink>  
                 </li> 
                 <li>
-                    <NavLink className='link' to = '/' activeClassName = 'link-active' exact>Log In</NavLink> 
+                    <NavLink className='link' to = '/auth' activeClassName = 'link-active' exact>Sign In</NavLink> 
                 </li>       
             </ul>
         </nav>
