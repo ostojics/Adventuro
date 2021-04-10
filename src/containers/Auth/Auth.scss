@@ -1,0 +1,62 @@
+@import '../../scss/variables';
+
+.section-auth {
+    background: -moz-linear-gradient(-25deg, rgba(#000, 1) 0%, rgba(#000, 1) 65%, rgba($bg-color-secondary, 1) 65%, rgba($bg-color-secondary, 1) 100%);
+    background: -webkit-gradient(-25deg, rgba(#000, 1) 0%, rgba(#000, 1) 65%, rgba($bg-color-secondary, 1) 65%, rgba($bg-color-secondary, 1) 100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .wrapper {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        height: 90vh;
+        background-color: #000;
+        border-radius: 1.25rem;
+    }
+
+    .text {
+        width: 50%;
+        border-radius: 1.25rem 0px 0px 1.25rem;
+        background-image: linear-gradient(0deg, rgba(#000, 0.4), rgba(#000, 0.4)),url(../../images/authImg.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        &-container {
+            margin-top: 8rem;
+            padding: 3rem;
+            color: $color-white;
+
+            h2 {
+                font-family: 'Poppins', 'sans-serif';
+                font-weight: 700;
+                font-size: 2.7rem;
+                margin: 0;
+            }
+
+            p {
+                font-family: 'Mulish', 'sans-serif';
+                font-weight: 400;
+                font-size: 1.2rem;
+                margin: 5px 0;
+            }
+        }
+    }
+
+    .AuthForm {
+        width: 50%;
+
+        &-group {
+            color: $text-primary;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            margin: 3rem 0;
+        }
+    }
+}
