@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './Auth.scss';
 
+import AuthInput from '../../components/UI/AuthInput/AuthInput';
+import AuthButton from '../../components/UI/AuthButton/AuthButton';
+
 class Auth extends Component {
     state = {
         signUpForm: {
             email: {
                 elementConfig: {
                     elementType: 'input',
-                    label: 'First Name',
-                    placeholder: 'test@test.com',
+                    label: null,
+                    placeholder: 'Email',
                     name: 'email',
                 },
                 validation: {
@@ -21,8 +24,8 @@ class Auth extends Component {
            password: {
                 elementConfig: {
                     elementType: 'password',
-                    label: 'Password',
-                    placeholder: 'Minimum eight characters, at least one uppercase letter, one lowercase letter and one number',
+                    label: null,
+                    placeholder: 'Password',
                     name: 'password',
                 },
                 validation: {
@@ -35,9 +38,9 @@ class Auth extends Component {
             confirmPassword: {
                 elementConfig: {
                     elementType: 'password',
-                    label: 'Password',
-                    placeholder: 'Minimum eight characters, at least one uppercase letter, one lowercase letter and one number',
-                    name: 'password',
+                    label: null,
+                    placeholder: 'Confirm Password',
+                    name: 'confirmPassword',
                 },
                 validation: {
                     isRequired: true,
@@ -82,11 +85,64 @@ class Auth extends Component {
         currentMethod: 'signUp'
     }
 
+    methodChangeHandler = () => {
+        let currentMethod = this.state.currentMethod;
+        let updatedMethod;
+        if(currentMethod === 'signUp') {
+            updatedMethod = 'signIn';
+        } else {
+            updatedMethod = 'signUp';
+        }
+
+        this.setState({currentMethod: updatedMethod})
+    }
+
+    onChangeHandler = (event, elementId) => {
+        let updatedForm = {};
+
+        if(this.state.currentMethod === 'signUp') {
+            updatedForm = {
+                ...this.state.signUpForm
+            }
+
+        } else {
+            updatedForm = {
+                ...this.state.signInForm
+            }
+        }
+
+        let updatedFormElement = {
+            ...updatedForm[elementId]
+        }
+
+        updatedFormElement.value = event.target.value;
+        //updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        //updatedFormElement.touched = true;
+        updatedForm[elementId] = updatedFormElement;
+
+      /*  let formIsValid = true;
+        for (let inputIdentifier in updatedForm) {
+            formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
+        } */
+        if(this.state.currentMethod === 'signUp') {
+            this.setState({signUpForm: updatedForm, /*formIsValid: formIsValid*/ })
+        } else {
+            this.setState({signInForm: updatedForm, /*formIsValid: formIsValid*/ })
+        }
+    }
+
 
     render() {
 
         let formElements = [];
-        let currentForm = this.state.currentMethod;
+        let currentMethod = this.state.currentMethod;
+        let currentForm = null;
+
+        if(currentMethod === 'signUp') {
+            currentForm = this.state.signUpForm;
+        } else {
+            currentForm = this.state.signInForm;
+        }
 
         for(let key in currentForm) {
             formElements.push({
@@ -96,9 +152,35 @@ class Auth extends Component {
         }
 
         let form = (
-            <form className='AuthForm'>
-               
-            </form>
+            <div className='form-wrapper'>
+                 <form className='AuthForm text-center'>
+                        <h2 className='AuthForm-title text-center'>Adventuro</h2>
+                    { formElements.map(formElement => {
+                    return (
+                        <div className='AuthForm-group' key = { formElement.id }>
+                            <AuthInput 
+                            label = { formElement.config.elementConfig.label }
+                            type = { formElement.config.elementConfig.elementType }
+                            placeholder = { formElement.config.elementConfig.placeholder }
+                            name = { formElement.config.elementConfig.name }
+                            value = { formElement.config.value }
+                            changed = { (event) => this.onChangeHandler(event, formElement.id) }/>
+                        </div>
+                    )
+                    }) }
+                        { this.state.currentMethod === 'signUp' ? (
+                            <p className='AuthForm-switcher'>Already have an account? <span onClick={ this.methodChangeHandler }>Sign in</span></p>
+                        ) : (
+                            <p className='AuthForm-switcher'>Don't have an account? <span onClick={ this.methodChangeHandler }>Sign up</span></p>
+                        ) }
+
+                        { this.state.currentMethod === 'signUp' ? (
+                            <AuthButton>SIGN UP</AuthButton>
+                        ) : (
+                            <AuthButton>SIGN IN</AuthButton>
+                        ) }
+                </form>
+            </div>
         )
 
         return (
