@@ -1,0 +1,21 @@
+@import '../../../scss/variables';
+
+.AuthInput {
+    padding: 0.9375rem;
+    font-family: 'Mulish', 'sans-serif';
+    font-weight: 400;
+    color: $text-primary;
+    font-size: 0.75rem;
+    margin-top: 0.9375rem;
+    background-color: #000;
+    outline: 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.AuthLabel {
+    color: $text-primary;
+    font-size: 0.9375rem;
+    font-family: 'Mulish', 'sans-serif';
+    font-weight: 400;
+}

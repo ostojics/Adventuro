@@ -185,11 +185,10 @@ class Testimonials extends Component {
                 { 
                     formElements.map(formElement => {
                         return (
-                            <div className='TestimonialsForm-group'>
+                            <div className='TestimonialsForm-group'  key = { formElement.id }>
                                 <FormElement 
                                 elementType = { formElement.config.elementConfig.elementType }
                                 label = { formElement.config.elementConfig.label }
-                                key = { formElement.id }
                                 id = { formElement.id }
                                 name = { formElement.config.elementConfig.name }
                                 value = { formElement.config.value }

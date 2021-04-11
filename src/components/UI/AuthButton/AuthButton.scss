@@ -1,0 +1,22 @@
+@import '../../../scss/variables';
+
+.AuthBtn {
+    padding: 0.9375rem 6.25rem;
+    background-color: $bg-color-secondary;
+    color: $color-white;
+    font-family: 'Mulish', 'sans-serif';
+    font-weight: 400;
+    border: 0;
+    outline: 0;
+    border-radius: 1.25rem;
+    transition: all .2s;
+    margin-top: 3rem;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($bg-color-secondary, 2%);
+        border-bottom: 1px solid $color-white;
+    }
+
+}

@@ -3,9 +3,15 @@ import './AuthInput.scss';
 
 const authInput = props => {
 
+    let label = null;
+
+    if(props.label !== null) {
+        label = <label className='AuthLabel'>{ props.label }</label>
+    }
+
     return (
         <Fragment>
-            <label className='AuthLabel'>{ props.label }</label>
+            { label }
             <input
             className = 'AuthInput' 
             name = { props.name }
