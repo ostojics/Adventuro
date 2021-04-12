@@ -10,7 +10,7 @@
     background-color: #000;
     outline: 0;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
 }
 
 .AuthLabel {
@@ -18,4 +18,26 @@
     font-size: 0.9375rem;
     font-family: 'Mulish', 'sans-serif';
     font-weight: 400;
+}
+
+.AuthError {
+    font-family: 'Mulish', 'sans-serif';
+    font-size: 10px;
+    font-weight: 400;
+    color: $color-white;
+    background-color: $bg-color-secondary;
+    padding: 5px;
+    border-radius: 0px 0px 5px 5px;
+    text-align: left;
+    padding-left: 0.625rem;
+    transition: all .2s;
+    pointer-events: none;
+
+    &-valid {
+        background-color: $color-green-primary;
+    }
+
+    &-invalid {
+        background-color: #780101;
+    }
 }
