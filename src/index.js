@@ -1,20 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import campDetailsReducer from './store/CampDetailsReducer';
-import campSelectionReducer from './store/CampSelectionReducer';
+import campDetailsReducer from './store/reducers/CampDetailsReducer';
+import campSelectionReducer from './store/reducers/CampSelectionReducer';
+import authReducer from './store/reducers/authReducer';
 
 const rootReducer = combineReducers({
    campDtls: campDetailsReducer,
-   campSlc: campSelectionReducer
+   campSlc: campSelectionReducer,
+   auth: authReducer
 })
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const composedEnhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+const store = createStore(rootReducer, composedEnhancers);
 
 const app = (
   <React.StrictMode>
