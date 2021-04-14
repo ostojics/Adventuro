@@ -6,6 +6,7 @@ import AuthInput from '../../components/UI/AuthInput/AuthInput';
 import AuthButton from '../../components/UI/AuthButton/AuthButton';
 import * as actions from '../../store/actions/index';
 import Loader from '../../components/UI/Loader/Loader';
+import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 
 class Auth extends Component {
     state = {
@@ -212,28 +213,36 @@ class Auth extends Component {
             })
         }
 
+        let errorMessage = <p></p>;
+        if(this.props.error) {
+            errorMessage = (
+                <div>
+                    <ErrorMessage error = { this.props.error.message }/>
+                </div>
+            )
+        }
     
         let form = (
             <form className='AuthForm text-center' onSubmit={ this.submitHandler }>
                     <h2 className='AuthForm-title text-center'>Adventuro</h2>
-                { formElements.map(formElement => {
-                return (
-                    <div className='AuthForm-group' key = { formElement.id }>
-                        <AuthInput 
-                        label = { formElement.config.elementConfig.label }
-                        type = { formElement.config.elementConfig.elementType }
-                        placeholder = { formElement.config.elementConfig.placeholder }
-                        name = { formElement.config.elementConfig.name }
-                        value = { formElement.config.value }
-                        changed = { (event) => this.onChangeHandler(event, formElement.id) }
-                        errorMsg = { formElement.config.elementConfig.errorMessage }
-                        touched = { formElement.config.touched }
-                        valid = { formElement.config.valid }
-                        rule = { formElement.config.elementConfig.rule }
-                        validMsg = { formElement.config.elementConfig.validMsg } />
-                    </div>
-                )
-                }) }
+                    { formElements.map(formElement => {
+                    return (
+                        <div className='AuthForm-group' key = { formElement.id }>
+                            <AuthInput 
+                            label = { formElement.config.elementConfig.label }
+                            type = { formElement.config.elementConfig.elementType }
+                            placeholder = { formElement.config.elementConfig.placeholder }
+                            name = { formElement.config.elementConfig.name }
+                            value = { formElement.config.value }
+                            changed = { (event) => this.onChangeHandler(event, formElement.id) }
+                            errorMsg = { formElement.config.elementConfig.errorMessage }
+                            touched = { formElement.config.touched }
+                            valid = { formElement.config.valid }
+                            rule = { formElement.config.elementConfig.rule }
+                            validMsg = { formElement.config.elementConfig.validMsg } />
+                        </div>
+                    )
+                    }) }
                     { this.state.currentMethod === 'signUp' ? (
                         <p className='AuthForm-switcher'>Already have an account? <span onClick={ this.methodChangeHandler }>Sign in</span></p>
                     ) : (
@@ -245,6 +254,7 @@ class Auth extends Component {
                     ) : (
                         <AuthButton>SIGN IN</AuthButton>
                     ) }
+                    { errorMessage }
              </form>
         )
 
@@ -252,12 +262,6 @@ class Auth extends Component {
             form = <Loader/>
         }
 
-        let errorMessage = null;
-        if(this.props.error) {
-            errorMessage = (
-                <p>{ this.props.error.message }</p>
-            )
-        }
 
         return (
             <section className='section-auth'>
@@ -270,7 +274,6 @@ class Auth extends Component {
                     </div>
                     <div className='form-wrapper'>
                         { form }
-                        { errorMessage }
                     </div>
                 </div>
             </section>

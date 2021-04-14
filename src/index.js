@@ -10,12 +10,14 @@ import reportWebVitals from './reportWebVitals';
 
 import campDetailsReducer from './store/reducers/CampDetailsReducer';
 import campSelectionReducer from './store/reducers/CampSelectionReducer';
+import bookReducer from './store/reducers/bookReducer';
 import authReducer from './store/reducers/authReducer';
 
 const rootReducer = combineReducers({
    campDtls: campDetailsReducer,
    campSlc: campSelectionReducer,
-   auth: authReducer
+   auth: authReducer,
+   book: bookReducer
 })
 const composedEnhancers = compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

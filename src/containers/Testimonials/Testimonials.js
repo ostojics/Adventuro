@@ -4,7 +4,7 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FormElement from '../../components/UI/FormElement/FormElement';
 import Submit from '../../components/UI/Submit/Submit';
 import Loader from '../../components/UI/Loader/Loader';
-import axios from '../../axios-testimonials';
+import axios from '../../axios-databaseApi';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -68,7 +68,7 @@ class Testimonials extends Component {
     }
 
     componentDidMount() {
-        this.setState({testimonialsLoading: true})
+        this.setState({ testimonialsLoading: true })
         axios.get('/testimonials.json')
         .then(res => {
             let fetchedTestimonials = [];
@@ -103,16 +103,7 @@ class Testimonials extends Component {
             isValid = value.length <= rules.maxLength && isValid
         }
 
-      /*  if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        } */
-
+      
         return isValid;
     }
 
