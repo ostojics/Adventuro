@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CampDescription.scss';
 
+import * as actions from '../../store/actions/index';
+
 import camp1 from '../../images/camp1.jpg';
 import camp2 from '../../images/camp2.jpg';
 import kayak1 from '../../images/kayak1.jpg';
@@ -11,12 +13,25 @@ import climb2 from '../../images/climb2.jpg';
 import ride1 from '../../images/ride1.jpg';
 import ride2 from '../../images/ride2.jpg';
 import { ReactComponent as ArrowIcon} from '../../icons/arrow.svg';
+import Loader from '../../components/UI/Loader/Loader';
 
 class CampDescription extends Component {
 
 
     iconClickHandler = () => {
         this.props.history.goBack();
+    }
+
+    bookHandler = (event) => {
+        event.preventDefault();
+        const bookingData = {
+            title: this.props.details.name,
+            location: this.props.details.location,
+            duration: this.props.details.duration,
+            price: this.props.details.price
+        }
+
+        this.props.onBookHandler(bookingData);
     }
 
     render() {
@@ -68,7 +83,7 @@ class CampDescription extends Component {
                             <p>Location: { this.props.details.location }</p>
                             <p>Duration: { this.props.details.duration }</p>
                             <p>Price: ${ this.props.details.price } </p>
-                            <button>Book now</button>
+                            { this.props.loading ? <Loader/> : <button onClick = { this.bookHandler }>Book now</button> }
                         </div>
                     </div>
                 </div>
@@ -79,8 +94,15 @@ class CampDescription extends Component {
 
 const mapStateToProps = state => {
     return {
-        details: state.campDtls.campDetails
+        details: state.campDtls.campDetails,
+        loading: state.book.loading
     }
 }
 
-export default connect(mapStateToProps)(CampDescription);
+const mapDispatchToProps = dispatch => {
+    return {
+        onBookHandler: (bookingData) => dispatch(actions.book(bookingData))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampDescription);
