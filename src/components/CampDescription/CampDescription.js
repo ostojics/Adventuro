@@ -13,7 +13,6 @@ import climb2 from '../../images/climb2.jpg';
 import ride1 from '../../images/ride1.jpg';
 import ride2 from '../../images/ride2.jpg';
 import { ReactComponent as ArrowIcon} from '../../icons/arrow.svg';
-import Loader from '../../components/UI/Loader/Loader';
 
 class CampDescription extends Component {
 
@@ -22,16 +21,24 @@ class CampDescription extends Component {
         this.props.history.goBack();
     }
 
-    bookHandler = (event) => {
-        event.preventDefault();
-        const bookingData = {
-            title: this.props.details.name,
-            location: this.props.details.location,
-            duration: this.props.details.duration,
-            price: this.props.details.price
-        }
+    onBook = () => {
+            const bookingData = {
+                title: this.props.details.name,
+                location: this.props.details.location,
+                duration: this.props.details.duration,
+                price: this.props.details.price
+            }
+    
+            this.props.onBookHandler(bookingData);
+    }
 
-        this.props.onBookHandler(bookingData);
+    bookHandler = (event) => {
+            if(this.props.isAuthenticated) {
+                event.preventDefault();
+                this.onBook();
+            } else {
+                this.props.history.push('/auth');
+            }
     }
 
     render() {
@@ -83,7 +90,7 @@ class CampDescription extends Component {
                             <p>Location: { this.props.details.location }</p>
                             <p>Duration: { this.props.details.duration }</p>
                             <p>Price: ${ this.props.details.price } </p>
-                            { this.props.loading ? <Loader/> : <button onClick = { this.bookHandler }>Book now</button> }
+                            <button onClick = { this.bookHandler }>Book now</button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +102,9 @@ class CampDescription extends Component {
 const mapStateToProps = state => {
     return {
         details: state.campDtls.campDetails,
-        loading: state.book.loading
+        loading: state.book.loading,
+        success: state.book.success,
+        isAuthenticated: state.auth.token !== null
     }
 }
 
