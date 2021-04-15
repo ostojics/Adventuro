@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     bookings: [],
     loading: false,
-    error: null
+    error: null,
+    success: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -17,13 +18,14 @@ const reducer = (state = initialState, action) => {
         case actionTypes.BOOKING_SUCCESS:
             const newBooking = {
                 ...action.bookingData,
-                id: action.bookingID
+                id: action.bookingID,
             }
 
             return {
                 ...state,
                 loading: false,
-                bookings: state.bookings.concat(newBooking)
+                bookings: state.bookings.concat(newBooking),
+                success: true
             }
 
         case actionTypes.BOOKING_FAILED:

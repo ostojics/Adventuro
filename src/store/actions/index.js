@@ -1,5 +1,7 @@
 export {
-    auth
+    auth,
+    logout,
+    checkAuthState 
 } from './auth';
 
-export { book } from './book';
+export { book} from './book';

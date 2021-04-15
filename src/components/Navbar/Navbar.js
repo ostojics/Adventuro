@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Navbar.scss';
 
 const navbar = props => {
@@ -19,11 +20,21 @@ const navbar = props => {
                     <NavLink className='link' to = '/testimonials' activeClassName = 'link-active'>Testimonials</NavLink>  
                 </li> 
                 <li>
-                    <NavLink className='link' to = '/auth' activeClassName = 'link-active' exact>Sign In</NavLink> 
+                    { props.isAuthenticated ? (
+                        <NavLink className='link' to = '/logout' activeClassName = 'link-active' exact>Sign Out</NavLink> 
+                    ) : (
+                        <NavLink className='link' to = '/auth' activeClassName = 'link-active' exact>Sign In</NavLink> 
+                    ) }
                 </li>       
             </ul>
         </nav>
     )
 }
 
-export default navbar;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
+}
+
+export default connect(mapStateToProps)(navbar);

@@ -221,6 +221,10 @@ class Auth extends Component {
                 </div>
             )
         }
+
+        if(this.props.isAuthenticated) {
+            this.props.history.push('/');
+        }
     
         let form = (
             <form className='AuthForm text-center' onSubmit={ this.submitHandler }>
@@ -284,7 +288,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null
     }
 }
 
