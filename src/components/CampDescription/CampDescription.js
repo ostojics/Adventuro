@@ -13,6 +13,7 @@ import climb2 from '../../images/climb2.jpg';
 import ride1 from '../../images/ride1.jpg';
 import ride2 from '../../images/ride2.jpg';
 import { ReactComponent as ArrowIcon} from '../../icons/arrow.svg';
+import StripeCheckoutButton from '../Stripe/StripeButton/StripeButton';
 
 class CampDescription extends Component {
 
@@ -21,24 +22,8 @@ class CampDescription extends Component {
         this.props.history.goBack();
     }
 
-    onBook = () => {
-            const bookingData = {
-                title: this.props.details.name,
-                location: this.props.details.location,
-                duration: this.props.details.duration,
-                price: this.props.details.price
-            }
-    
-            this.props.onBookHandler(bookingData);
-    }
-
-    bookHandler = (event) => {
-            if(this.props.isAuthenticated) {
-                event.preventDefault();
-                this.onBook();
-            } else {
-                this.props.history.push('/auth');
-            }
+    onClickHandler = () => {
+        this.props.history.push('/auth');
     }
 
     render() {
@@ -90,7 +75,11 @@ class CampDescription extends Component {
                             <p>Location: { this.props.details.location }</p>
                             <p>Duration: { this.props.details.duration }</p>
                             <p>Price: ${ this.props.details.price } </p>
-                            <button onClick = { this.bookHandler }>Book now</button>
+                            { this.props.isAuthenticated ? (
+                                <StripeCheckoutButton price = { this.props.details.price } email = { this.props.userEmail }/>
+                            ) : (
+                                <button onClick = { this.onClickHandler }>Sign In to Book</button>
+                            ) }
                         </div>
                     </div>
                 </div>
@@ -104,7 +93,8 @@ const mapStateToProps = state => {
         details: state.campDtls.campDetails,
         loading: state.book.loading,
         success: state.book.success,
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.token !== null,
+        userEmail: state.auth.email
     }
 }
 
