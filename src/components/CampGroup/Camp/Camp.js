@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import camp1 from '../../../images/camp1.jpg';
 import camp2 from '../../../images/camp2.jpg';
 import climb1 from '../../../images/climb1.jpg';
@@ -9,59 +9,55 @@ import ride1 from '../../../images/ride1.jpg';
 import ride2 from '../../../images/ride2.jpg';
 import './Camp.scss';
 
-class Camp extends Component {
+const Camp = props => {
 
+    let image = null;
 
-    render() {
+    switch(props.imageName) {
+        case 'camp1':
+            image = camp1;
+            break;
+        case 'camp2':
+            image = camp2;
+            break;
+        case 'climb1':
+            image = climb1;
+            break;
+        case 'climb2':
+            image = climb2;
+            break;
+        case 'kayak1':
+            image = kayak1;
+            break;
+        case 'kayak2':
+            image = kayak2;
+            break;
+        case 'ride1':
+            image = ride1;
+            break;
+        case 'ride2':
+            image = ride2;
+            break;
+        default: 
+            image = camp1;
+            break;
+    }
 
-        let image = null;
-
-        switch(this.props.imageName) {
-            case 'camp1':
-                image = camp1;
-                break;
-            case 'camp2':
-                image = camp2;
-                break;
-            case 'climb1':
-                image = climb1;
-                break;
-            case 'climb2':
-                image = climb2;
-                break;
-            case 'kayak1':
-                image = kayak1;
-                break;
-            case 'kayak2':
-                image = kayak2;
-                break;
-            case 'ride1':
-                image = ride1;
-                break;
-            case 'ride2':
-                image = ride2;
-                break;
-            default: 
-                image = camp1;
-                break;
-        }
-
-        return (
-            <div onClick = { this.props.onCampClick }>
-                <div className = 'camp' onClick = { this.props.clicked }>
-                    <div className = 'camp-description'>
-                        <div className = { 'camp-description--text' }>
-                            <h3>{ this.props.name }</h3>
-                            <p>{ this.props.shortDescription }</p>
-                        </div>
-                        <div className = { 'camp-description--image' }>
-                        <img src = { image } alt = 'camp' width='100%' height='100%' />
-                        </div>
+    return (
+        <div onClick = { props.onCampClick }>
+            <div className = 'camp' onClick = { props.clicked }>
+                <div className = 'camp-description'>
+                    <div className = { 'camp-description--text' }>
+                        <h3>{ props.name }</h3>
+                        <p>{ props.shortDescription }</p>
+                    </div>
+                    <div className = { 'camp-description--image' }>
+                    <img src = { image } alt = 'camp' width='100%' height='100%' />
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
     
 }
 

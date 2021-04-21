@@ -1,31 +1,44 @@
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React, { useEffect, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Camps from './containers/Camps/Camps';
-import Testimonials from './containers/Testimonials/Testimonials';
 import CampDescription from './components/CampDescription/CampDescription';
-import Auth from './containers/Auth/Auth';
-import Logout from './components/Logout/Logout';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.onTryAutoSignUp();
-  }
+const Testimonials = React.lazy(() => {
+  return import('./containers/Testimonials/Testimonials');
+})
 
-  render() { 
-      return (
-          <div className="App">
-            <Route path = '/' exact component = { Home }/>
-            <Route path = '/camps' exact component = { Camps } />
-            <Route path = '/camps/camp' component = { CampDescription } />
-            <Route path = '/testimonials' component = { Testimonials } />
-            <Route path = '/auth' component = { Auth }/>
-            <Route path = '/logout' component = { Logout } />
-          </div>
-      );
-  }
+const Auth = React.lazy(() => {
+  return import('./containers/Auth/Auth');
+})
+
+const Logout = React.lazy(() => {
+  return import('./components/Logout/Logout');
+})
+
+const App = props => {
+  useEffect(() => {
+    props.onTryAutoSignUp();
+  }, [])
+
+  const routes = (
+    <Switch>
+      <Route path = '/camps' exact component = { Camps } />
+      <Route path = '/camps/camp' component = { CampDescription } />
+      <Route path = '/testimonials' component = { Testimonials } />
+      <Route path = '/auth' component = { Auth }/>
+      <Route path = '/logout' component = { Logout } />
+      <Route path = '/' exact component = { Home }/>
+    </Switch>
+  )    
+
+  return (
+      <div className="App">
+        <Suspense fallback = {<p>Loading...</p>}>{ routes }</Suspense>
+      </div>
+  );
  
 }
 

@@ -1,15 +1,12 @@
 import React from 'react';
-import './AuthButton.scss';
+import { StyledAuthButton } from '../../StyledComponents/StyledComponents';
 
 const authButton = props => {
 
     return (
-        <button 
-        type='submit' 
-        className={ props.disabled ? 'AuthBtnDisabled' : 'AuthBtn' } 
-        disabled = { props.disabled }>
+        <StyledAuthButton type='submit'  disabled = { props.disabled }>
             { props.children }
-        </button>
+        </StyledAuthButton>
     )
 }
 

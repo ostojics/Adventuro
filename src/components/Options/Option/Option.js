@@ -1,6 +1,6 @@
 
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { StyledOptionCard } from '../../StyledComponents/StyledComponents';
 import './Option.scss';
 import {ReactComponent as KayakIcon} from '../../../icons/kayak.svg';
 import {ReactComponent as CampIcon} from '../../../icons/tent.svg';
@@ -9,22 +9,12 @@ import {ReactComponent as MountainIcon} from '../../../icons/mountains.svg';
 
 
 
-class Option extends Component {
-    state = {
-        clicked: false
-    }
-
-    optionCardStyleHandler = () => {
-        const currentState = this.state.clicked; 
-        this.setState({clicked: !currentState})
-    }
-
-
-    render() {
+const Option = props => {
+    const [clicked, setClicked] = useState(false);
 
     let campIcon = null;
 
-    switch(this.props.title) {
+    switch(props.title) {
         case('Camping'):
             campIcon = <CampIcon className = { 'Icon' }/>
             break;
@@ -42,29 +32,17 @@ class Option extends Component {
             break;
     }
 
-    const StyledOptionCard = styled.div`
-        padding: 1.25em;
-        background-color: #181F38;
-        border-radius: 1.25em;
-        border: ${props => props.clicked ? '5px solid #EF6E6F' : '5px solid transparent'};
-        transition: all .2s;
-        cursor: pointer;
-        &:hover {
-            border: ${props => props.clicked ? '5px solid #EF6E6F' : '5px solid #6573B5'};
-        }
-    `;
-
     return (
         <div className = { 'option' }>
-            <div onClick = { (!this.state.clicked ? () => this.props.selected(this.props.title) : () => this.props.deselected(this.props.title)) }>
-                <StyledOptionCard clicked = { this.state.clicked } onClick = { this.optionCardStyleHandler }>
+            <div onClick = { (!clicked ? () => props.selected(props.title) : () => props.deselected(props.title)) }>
+                <StyledOptionCard clicked = { clicked } onClick = { () => setClicked(prevClickedState => !prevClickedState) }>
                     { campIcon }
                 </StyledOptionCard>
             </div>
-            <p className = { 'option-text' }>{ this.props.title }</p>
+            <p className = { 'option-text' }>{ props.title }</p>
         </div>
     )
-    }    
+       
 }
-
+ 
 export default Option;
