@@ -1,51 +1,46 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import CampGroup from '../../components/CampGroup/CampGroup';
 import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
 
-class Camp extends Component {
+const Camp = props => {
     
-
-    campClickHandler = () => {
-        this.props.history.push(`${this.props.match.path}/camp`);
+    const campClickHandler = () => {
+        props.history.push(`${props.match.path}/camp`);
+    }
+    let renderData = null;
+    if(props.categoriesAreSelected) {
+        renderData = props.selectedCampsData;
+    } else {
+        renderData = props.initialCampsData;
     }
 
-    render() {
-
-        let renderData = null;
-        if(this.props.categoriesAreSelected) {
-            renderData = this.props.selectedCampsData;
-        } else {
-            renderData = this.props.initialCampsData;
-        }
-
-        return (
-            <Fragment>
-                <section className='section-camps mb-4' >
-                    <div className='container' >
-                    <Navbar />
-                        { this.props.categoriesAreSelected 
-                        ? (
-                            <h1 className='heading-primary-md text-center mt-6'>Recommended for you</h1>
-                        ) 
-                        : (
-                            <h1 className='heading-primary-md text-center mt-6'>All of our camps</h1>
-                        )  }
-                        { renderData.map(campGroup => {
-                            return <CampGroup 
-                            title = { campGroup.title } 
-                            key = { campGroup.id }
-                            camps = { campGroup.camps }
-                            clicked = { this.campClickHandler }
-                            onCampClick = { this.props.onCampClick }
-                            />
-                        }) }
-                    </div>
-                </section>
-            </Fragment>
-        )
-    }
+    return (
+        <Fragment>
+            <section className='section-camps mb-4' >
+                <div className='container' >
+                <Navbar />
+                    { props.categoriesAreSelected 
+                    ? (
+                        <h1 className='heading-primary-md text-center mt-6'>Recommended for you</h1>
+                    ) 
+                    : (
+                        <h1 className='heading-primary-md text-center mt-6'>All of our camps</h1>
+                    )  }
+                    { renderData.map(campGroup => {
+                        return <CampGroup 
+                        title = { campGroup.title } 
+                        key = { campGroup.id }
+                        camps = { campGroup.camps }
+                        clicked = { campClickHandler }
+                        onCampClick = { props.onCampClick }
+                        />
+                    }) }
+                </div>
+            </section>
+        </Fragment>
+    )
 }
 
 const mapStateToProps = state => {

@@ -1,9 +1,9 @@
 import React from 'react';
-import './Submit.scss';
+import { StyledSubmit } from '../../StyledComponents/StyledComponents';
 
 
 const submit = props => (
-    <button type='submit' className={ props.disabled ? 'Submit-disabled' : 'Submit' } disabled = { props.disabled }>Submit</button>
+    <StyledSubmit type='submit' disabled = { props.disabled }>Submit</StyledSubmit>
 )
 
 export default submit;
