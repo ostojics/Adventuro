@@ -1,19 +1,35 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CampGroup from '../../components/CampGroup/CampGroup';
 import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
 
 const Camp = props => {
-    
+
+    const dispatch = useDispatch();
+    const onCampClick = (campDetails) => dispatch({ type: 'CAMP_CLICK', payload: campDetails });
+
+    const selectedCampsData = useSelector(state => {
+        return state.campSlc.campsRenderData
+    })
+
+    const initialCampsData = useSelector(state => {
+        return state.campSlc.campsData
+    })
+
+    const categoriesAreSelected = useSelector(state => {
+        return state.campSlc.categoriesSelected 
+    })
+
     const campClickHandler = () => {
         props.history.push(`${props.match.path}/camp`);
     }
+    
     let renderData = null;
-    if(props.categoriesAreSelected) {
-        renderData = props.selectedCampsData;
+    if(categoriesAreSelected) {
+        renderData = selectedCampsData;
     } else {
-        renderData = props.initialCampsData;
+        renderData = initialCampsData;
     }
 
     return (
@@ -21,7 +37,7 @@ const Camp = props => {
             <section className='section-camps mb-4' >
                 <div className='container' >
                 <Navbar />
-                    { props.categoriesAreSelected 
+                    { categoriesAreSelected 
                     ? (
                         <h1 className='heading-primary-md text-center mt-6'>Recommended for you</h1>
                     ) 
@@ -34,7 +50,7 @@ const Camp = props => {
                         key = { campGroup.id }
                         camps = { campGroup.camps }
                         clicked = { campClickHandler }
-                        onCampClick = { props.onCampClick }
+                        onCampClick = { onCampClick }
                         />
                     }) }
                 </div>
@@ -43,20 +59,5 @@ const Camp = props => {
     )
 }
 
-const mapStateToProps = state => {
 
-    return {
-        selectedCampsData: state.campSlc.campsRenderData,
-        initialCampsData: state.campSlc.campsData,
-        categoriesAreSelected: state.campSlc.categoriesSelected 
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-
-    return {
-        onCampClick: (campDetails) => dispatch({ type: 'CAMP_CLICK', payload: campDetails })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Camp);
+export default (React.memo(Camp));

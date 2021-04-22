@@ -1,9 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './Navbar.scss';
 
-const navbar = props => {
+const Navbar = props => {
+
+    const isAuthenticated = useSelector(state => {
+        return state.auth.token !== null
+    })
+
     return (
         <nav className = 'navbar-secondary'>
             <div className = 'logo'>
@@ -20,7 +25,7 @@ const navbar = props => {
                     <NavLink className='link' to = '/testimonials' activeClassName = 'link-active'>Testimonials</NavLink>  
                 </li> 
                 <li>
-                    { props.isAuthenticated ? (
+                    { isAuthenticated ? (
                         <NavLink className='link' to = '/logout' activeClassName = 'link-active' exact>Sign Out</NavLink> 
                     ) : (
                         <NavLink className='link' to = '/auth' activeClassName = 'link-active' exact>Sign In</NavLink> 
@@ -31,10 +36,4 @@ const navbar = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.token !== null
-    }
-}
-
-export default connect(mapStateToProps)(navbar);
+export default React.memo(Navbar);

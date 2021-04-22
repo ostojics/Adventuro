@@ -1,7 +1,7 @@
 
 import React, { useState, Fragment } from 'react';
 import { ReactComponent as Icon } from '../../icons/discovery.svg';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CtaButton from '../../components/UI/CtaButton/CtaButton';
 import Options from '../../components/Options/Options';
 import Navbar from '../../components/Navbar/Navbar';
@@ -26,6 +26,16 @@ const Home = props => {
         id: 4
     },
 ])
+
+    const dispatch = useDispatch();
+    const onOptionSelect = (optionName) => dispatch({ type: 'OPTION_SELECTED', optName: optionName });
+    const onOptionDeselect = (optionName) => dispatch({type: 'OPTION_DESELECTED', optName: optionName});
+    const onDoneClick = () => dispatch({ type: 'DONE_CLICK' });
+    const onSkipClick = () => dispatch({ type: 'SKIP_CLICK' });
+
+    const optionsSelectedNum = useSelector(state => {
+        return state.campSlc.optionsSelectedNum;
+    })
 
     return(
         <Fragment>
@@ -55,18 +65,18 @@ const Home = props => {
                 <div id='categories'>
                     <Options 
                     options = { options } 
-                    optionSelected = { props.onOptionSelect }
-                    optionDeselected = { props.onOptionDeselect }/>
+                    optionSelected = { onOptionSelect }
+                    optionDeselected = { onOptionDeselect }/>
                 </div>
                 <div className='buttons'>
-                    <div onClick = { props.onSkipClick }>
+                    <div onClick = { onSkipClick }>
                         <CtaButton type= { 'ghost' } click = { () =>  props.history.push('/camps') }>Skip</CtaButton>
                     </div>
-                    <div onClick = { props.onDoneClick }>
+                    <div onClick = { onDoneClick }>
                         <CtaButton 
                         type= { 'primary' } 
                         click = { () =>  props.history.push('/camps') }
-                        disabled = { props.optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
+                        disabled = { optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
                     </div>
                 </div>
             </section>
@@ -75,19 +85,5 @@ const Home = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        optionsSelectedNum: state.campSlc.optionsSelectedNum
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onOptionSelect: (optionName) => dispatch({ type: 'OPTION_SELECTED', optName: optionName }),
-        onOptionDeselect: (optionName) => dispatch({type: 'OPTION_DESELECTED', optName: optionName}),
-        onDoneClick: () => dispatch({ type: 'DONE_CLICK' }),
-        onSkipClick: () => dispatch({ type: 'SKIP_CLICK' })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

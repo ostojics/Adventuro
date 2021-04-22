@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import './CampDescription.scss';
 
 import * as actions from '../../store/actions/index';
@@ -17,9 +17,24 @@ import StripeCheckoutButton from '../Stripe/StripeButton/StripeButton';
 
 const CampDescription = props => {
 
+    const dispatch = useDispatch();
+    const onBookHandler = (bookingData) => dispatch(actions.book(bookingData));
+
+    const details = useSelector(state => {
+        return state.campDtls.campDetails
+    })
+
+    const isAuthenticated = useSelector(state => {
+        return state.auth.token !== null
+    })
+
+    const userEmail = useSelector(state => {
+        return state.auth.email
+    })
+
     let imageName = null;
 
-    switch(props.details.image) {
+    switch(details.image) {
         case 'camp1':
             imageName = camp1;
             break;
@@ -57,15 +72,15 @@ const CampDescription = props => {
                     <img src= { imageName } alt = 'camp' width='100%' height='100%' />
                 </div>
                 <div className='line'></div>
-                <h2 className='camp-desc--title text-center'>{ props.details.name }</h2>
+                <h2 className='camp-desc--title text-center'>{ details.name }</h2>
                 <div className='camp-desc--content'>
-                    <p>{ props.details.description }</p>
+                    <p>{ details.description }</p>
                     <div className='camp-desc--content__details'>
-                        <p>Location: { props.details.location }</p>
-                        <p>Duration: { props.details.duration }</p>
-                        <p>Price: ${ props.details.price } </p>
-                        { props.isAuthenticated ? (
-                            <StripeCheckoutButton price = { props.details.price } email = { props.userEmail }/>
+                        <p>Location: { details.location }</p>
+                        <p>Duration: { details.duration }</p>
+                        <p>Price: ${ details.price } </p>
+                        { isAuthenticated ? (
+                            <StripeCheckoutButton price = { details.price } email = { userEmail }/>
                         ) : (
                             <button onClick = { () => props.history.push('/auth') }>Sign In to Book</button>
                         ) }
@@ -76,20 +91,5 @@ const CampDescription = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        details: state.campDtls.campDetails,
-        loading: state.book.loading,
-        success: state.book.success,
-        isAuthenticated: state.auth.token !== null,
-        userEmail: state.auth.email
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onBookHandler: (bookingData) => dispatch(actions.book(bookingData))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CampDescription);
+export default (React.memo(CampDescription));
