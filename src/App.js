@@ -25,12 +25,12 @@ const App = props => {
 
   const routes = (
     <Switch>
+      <Route path = '/' exact component = { Home }/>
       <Route path = '/camps' exact component = { Camps } />
       <Route path = '/camps/camp' component = { CampDescription } />
       <Route path = '/testimonials' component = { Testimonials } />
       <Route path = '/auth' component = { Auth }/>
       <Route path = '/logout' component = { Logout } />
-      <Route path = '/' exact component = { Home }/>
     </Switch>
   )    
 

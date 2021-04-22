@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FormElement from '../../components/UI/FormElement/FormElement';
@@ -8,67 +8,65 @@ import axios from '../../axios-databaseApi';
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-class Testimonials extends Component {
-    state = {
-        form: {
-            firstName: {
-                elementConfig: {
-                    elementType: 'input',
-                    label: 'First Name',
-                    placeholder: 'John',
-                    name: 'firstname',
-                },
-                validation: {
-                    isRequired: true,
-                    maxLength: 15,
-                    minLength: 3
-                },
-                value: '',
-                valid: false,
-                touched: false
+const Testimonials = props => {
+    const [form, setForm] = useState({
+        firstName: {
+            elementConfig: {
+                elementType: 'input',
+                label: 'First Name',
+                placeholder: 'John',
+                name: 'firstname',
             },
-
-            lastName: {
-                elementConfig: {
-                    elementType: 'input',
-                    label: 'Last Name',
-                    placeholder: 'Smith',
-                    name: 'lastname',
-                },
-                validation: {
-                    isRequired: true,
-                    maxLength: 15,
-                    minLength: 3
-                },
-                value: '',
-                valid: false,
-                touched: false
+            validation: {
+                isRequired: true,
+                maxLength: 15,
+                minLength: 3
             },
-
-            review: {
-                elementConfig: {
-                    elementType: 'textarea',
-                    label: 'Tell us about your experience',
-                    placeholder: '',
-                    name: 'review',
-                },
-                validation: {
-                    isRequired: true,
-                    minLength: 10
-                },
-                value: '',
-                valid: false,
-                touched: false
-            }
+            value: '',
+            valid: false,
+            touched: false
         },
-        testimonials: [],
-        formLoading: false,
-        testimonialsLoading: false,
-        formIsValid: false
-    }
 
-    componentDidMount() {
-        this.setState({ testimonialsLoading: true })
+        lastName: {
+            elementConfig: {
+                elementType: 'input',
+                label: 'Last Name',
+                placeholder: 'Smith',
+                name: 'lastname',
+            },
+            validation: {
+                isRequired: true,
+                maxLength: 15,
+                minLength: 3
+            },
+            value: '',
+            valid: false,
+            touched: false
+        },
+
+        review: {
+            elementConfig: {
+                elementType: 'textarea',
+                label: 'Tell us about your experience',
+                placeholder: '',
+                name: 'review',
+            },
+            validation: {
+                isRequired: true,
+                minLength: 10
+            },
+            value: '',
+            valid: false,
+            touched: false
+        }
+    })
+    const [testimonials, setTestimonials] = useState([]);
+    const [formLoading, setFormLoading] = useState(false);
+    const [testimonialsLoading, setTestimonialsLoading] = useState(false);
+    const [formIsValid, setFormIsValid] = useState(false);
+
+    useEffect(() => {
+        setTestimonialsLoading(true);
         axios.get('/testimonials.json')
         .then(res => {
             let fetchedTestimonials = [];
@@ -78,14 +76,16 @@ class Testimonials extends Component {
                     id: key
                 })
             }
-            this.setState({testimonialsLoading: false ,testimonials: fetchedTestimonials})
-            console.log(this.state.testimonials)
+            //this.setState({testimonialsLoading: false ,testimonials: fetchedTestimonials})
+            setTestimonialsLoading(false);
+            setTestimonials(fetchedTestimonials);
+            console.log(testimonials)
         }).catch(error => {
             console.log(error);
         })
-    }
+    }, [])
 
-    checkValidity = (value, rules) => {
+    const checkValidity = (value, rules) => {
         let isValid = true;
         if (!rules) {
             return true;
@@ -107,9 +107,9 @@ class Testimonials extends Component {
         return isValid;
     }
 
-    onChangeHandler = (elementId, event) => {
+    const onChangeHandler = (elementId, event) => {
         let updatedForm = {
-            ...this.state.form
+            ...form
         }
 
         let updatedFormElement = {
@@ -117,7 +117,7 @@ class Testimonials extends Component {
         }
 
         updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
         updatedForm[elementId] = updatedFormElement;
 
@@ -125,23 +125,26 @@ class Testimonials extends Component {
         for (let inputIdentifier in updatedForm) {
             formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
         }
-        this.setState({form: updatedForm, formIsValid: formIsValid })
+        setFormIsValid(formIsValid);
+        setForm(updatedForm);
+        //this.setState({form: updatedForm, formIsValid: formIsValid })
     }
 
     
-    onSubmitHandler = (event) => {
+    const onSubmitHandler = (event) => {
         event.preventDefault();
-        this.setState({ formLoading: true });
+        //this.setState({ formLoading: true });
+        setFormLoading(true);
         const formData = {};
 
         const dateObject = new Date();
-        const monthNumber = dateObject.getUTCMonth();
-        const month = months[monthNumber - 1];
+        const monthNumber = dateObject.getMonth();
+        const month = months[monthNumber];
         const year = dateObject.getUTCFullYear();
         const date = `${month} ${year}`;
 
-        for (let key in this.state.form) {
-            formData[key] = this.state.form[key].value;
+        for (let key in form) {
+            formData[key] = form[key].value;
         }
 
         formData['date'] = date;
@@ -152,7 +155,8 @@ class Testimonials extends Component {
 
         axios.post( 'testimonials.json', testimonial )
             .then( response => {
-                this.setState({ formLoading: false });
+                //this.setState({ formLoading: false });
+                setFormLoading(false);
                 window.location.reload();
             } )
             .catch( error => {
@@ -161,71 +165,68 @@ class Testimonials extends Component {
             } );
     }
 
-    render() {
-
-        let formElements = [];
-        for (let key in this.state.form) {
-            formElements.push({
-                id: key,
-                config: { ...this.state.form[key] }
-            })
-        }
-
-        let form = (
-            <form className='TestimonialsForm' onSubmit = { this.onSubmitHandler }>
-                { 
-                    formElements.map(formElement => {
-                        return (
-                            <div className='TestimonialsForm-group'  key = { formElement.id }>
-                                <FormElement 
-                                elementType = { formElement.config.elementConfig.elementType }
-                                label = { formElement.config.elementConfig.label }
-                                id = { formElement.id }
-                                name = { formElement.config.elementConfig.name }
-                                value = { formElement.config.value }
-                                placeholder = { formElement.config.elementConfig.placeholder }
-                                changed = { (event) => this.onChangeHandler(formElement.id, event) }
-                                valid = { formElement.config.valid }
-                                touched = { formElement.config.touched } />
-                            </div>
-                        )
-                    }) 
-                }
-                <Submit disabled = { !this.state.formIsValid }/>
-            </form>
-        )
-
-        let reviews = (
-            <div className='reviews'>
-                {
-                    this.state.testimonials.map(testimonial => {
-                        return (
-                        <ReviewCard 
-                        firstName = { testimonial.firstName }
-                        lastName = { testimonial.lastName }
-                        review = { testimonial.review }
-                        date = { testimonial.date }
-                        key = { testimonial.id } />
-                        )
-                    })
-                }
-            </div>
-        )
-
-        return (
-            <Fragment>
-                <section className='section-testimonials'>
-                    <div className='container'>
-                        <Navbar />
-                        <h1 className='heading-primary-md text-center mt-8'>See what others think</h1>
-                        { this.state.testimonialsLoading ? <Loader /> : reviews }
-                    </div>
-                    <p className='lead text-center mb-3'>Or share your own opinion</p>
-                   { this.state.formLoading ? <Loader /> : form } 
-                </section>
-            </Fragment>
-        )
+    let formElements = [];
+    for (let key in form) {
+        formElements.push({
+            id: key,
+            config: { ...form[key] }
+        })
     }
+
+    let Form = (
+        <form className='TestimonialsForm' onSubmit = { onSubmitHandler }>
+            { 
+                formElements.map(formElement => {
+                    return (
+                        <div className='TestimonialsForm-group'  key = { formElement.id }>
+                            <FormElement 
+                            elementType = { formElement.config.elementConfig.elementType }
+                            label = { formElement.config.elementConfig.label }
+                            id = { formElement.id }
+                            name = { formElement.config.elementConfig.name }
+                            value = { formElement.config.value }
+                            placeholder = { formElement.config.elementConfig.placeholder }
+                            changed = { (event) => onChangeHandler(formElement.id, event) }
+                            valid = { formElement.config.valid }
+                            touched = { formElement.config.touched } />
+                        </div>
+                    )
+                }) 
+            }
+            <Submit disabled = { !formIsValid }/>
+        </form>
+    )
+
+    let reviews = (
+        <div className='reviews'>
+            {
+                testimonials.map(testimonial => {
+                    return (
+                    <ReviewCard 
+                    firstName = { testimonial.firstName }
+                    lastName = { testimonial.lastName }
+                    review = { testimonial.review }
+                    date = { testimonial.date }
+                    key = { testimonial.id } />
+                    )
+                })
+            }
+        </div>
+    )
+
+    return (
+        <Fragment>
+            <section className='section-testimonials'>
+                <div className='container'>
+                    <Navbar />
+                    <h1 className='heading-primary-md text-center mt-8'>See what others think</h1>
+                    { testimonialsLoading ? <Loader /> : reviews }
+                </div>
+                <p className='lead text-center mb-3'>Or share your own opinion</p>
+                { formLoading ? <Loader /> : Form } 
+            </section>
+        </Fragment>
+    )
 }
 
 export default Testimonials;

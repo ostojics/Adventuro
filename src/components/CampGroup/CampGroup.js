@@ -29,4 +29,4 @@ const campGroup = props => {
     )
 }
 
-export default campGroup;
+export default React.memo(campGroup);
