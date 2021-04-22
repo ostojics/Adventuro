@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import './CampDescription.scss';
 
 import * as actions from '../../store/actions/index';
@@ -13,12 +15,19 @@ import climb2 from '../../images/climb2.jpg';
 import ride1 from '../../images/ride1.jpg';
 import ride2 from '../../images/ride2.jpg';
 import { ReactComponent as ArrowIcon} from '../../icons/arrow.svg';
-import StripeCheckoutButton from '../Stripe/StripeButton/StripeButton';
+import CheckoutForm from '../Stripe/StripeButton/StripeCheckout';
+
+const ELEMENTS_OPTIONS = {
+    fonts: [
+      {
+        cssSrc: "https://fonts.googleapis.com/css?family=Roboto"
+      }
+    ]
+  };
+
+const stripePromise = loadStripe("pk_test_51IgbDWHiy8J2sZTXxRgCLN9pONmD8I8ABcvEhjWHFWSRO8EWPVyxXbWoanjMDCmf2oPTmwbAe2AjyhMjI1pjuHB600sgLVpUyr");
 
 const CampDescription = props => {
-
-    const dispatch = useDispatch();
-    const onBookHandler = (bookingData) => dispatch(actions.book(bookingData));
 
     const details = useSelector(state => {
         return state.campDtls.campDetails
@@ -79,13 +88,14 @@ const CampDescription = props => {
                         <p>Location: { details.location }</p>
                         <p>Duration: { details.duration }</p>
                         <p>Price: ${ details.price } </p>
-                        { isAuthenticated ? (
-                            <StripeCheckoutButton price = { details.price } email = { userEmail }/>
-                        ) : (
-                            <button onClick = { () => props.history.push('/auth') }>Sign In to Book</button>
-                        ) }
+                        { !isAuthenticated && <button onClick = { () => props.history.push('/auth') }>Sign In to Book</button>  }
                     </div>
                 </div>
+                { isAuthenticated && (
+                    <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
+                        <CheckoutForm email = { userEmail } price = { details.price }/>
+                    </Elements>
+                ) }
             </div>
         </section>
     )
