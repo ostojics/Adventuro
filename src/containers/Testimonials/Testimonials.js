@@ -76,10 +76,8 @@ const Testimonials = props => {
                     id: key
                 })
             }
-            //this.setState({testimonialsLoading: false ,testimonials: fetchedTestimonials})
             setTestimonialsLoading(false);
             setTestimonials(fetchedTestimonials);
-            console.log(testimonials)
         }).catch(error => {
             console.log(error);
         })
@@ -127,13 +125,11 @@ const Testimonials = props => {
         }
         setFormIsValid(formIsValid);
         setForm(updatedForm);
-        //this.setState({form: updatedForm, formIsValid: formIsValid })
     }
 
     
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        //this.setState({ formLoading: true });
         setFormLoading(true);
         const formData = {};
 
@@ -155,12 +151,10 @@ const Testimonials = props => {
 
         axios.post( 'testimonials.json', testimonial )
             .then( response => {
-                //this.setState({ formLoading: false });
                 setFormLoading(false);
                 window.location.reload();
             } )
             .catch( error => {
-               // this.setState( { loading: false } );
                console.log(error);
             } );
     }

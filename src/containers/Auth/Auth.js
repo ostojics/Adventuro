@@ -128,7 +128,6 @@ const Auth = props =>{
             updatedMethod = 'signUp';
         }
 
-        //this.setState({currentMethod: updatedMethod})
         setCurrentMethod(updatedMethod);
     }
 
@@ -192,11 +191,9 @@ const Auth = props =>{
             formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
         } 
         if(currentMethod === 'signUp') {
-            //this.setState({signUpForm: updatedForm, signUpValid: formIsValid })
             setSignUpForm(updatedForm);
             setSignUpValid(formIsValid);
         } else {
-            //this.setState({signInForm: updatedForm, signInValid: formIsValid })
             setSignInForm(updatedForm);
             setSignInValid(formIsValid);
         }
