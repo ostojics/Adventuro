@@ -1,6 +1,5 @@
 
 import React, { useState, Fragment } from 'react';
-import { ReactComponent as Icon } from '../../icons/discovery.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import CtaButton from '../../components/UI/CtaButton/CtaButton';
 import Options from '../../components/Options/Options';
@@ -50,10 +49,7 @@ const Home = props => {
                             Change the way you live, closer to nature
                         </p>
                     </div>
-                    <a className = 'cta' href="#categories">
-                            Explore
-                            <Icon className = { 'icon' }/>
-                    </a>
+                    <a className = 'cta' href="#categories">Explore</a>
                 </div>
             </section>
             <section id='section-categories' className='section-categories mt-5'>

@@ -46,15 +46,10 @@ const Camp = props => {
     return (
         <div onClick = { props.onCampClick }>
             <div className = 'camp' onClick = { props.clicked }>
-                <div className = 'camp-description'>
-                    <div className = { 'camp-description--text' }>
-                        <h3>{ props.name }</h3>
-                        <p>{ props.shortDescription }</p>
-                    </div>
-                    <div className = { 'camp-description--image' }>
-                    <img src = { image } alt = 'camp' width='100%' height='100%' />
-                    </div>
+                <div className = 'details'>
+                    <h3><i class="fas fa-map-marker-alt"></i> { props.location }</h3>
                 </div>
+                <img src = { image } width = '100%' height = '100%' />
             </div>
         </div>
     )

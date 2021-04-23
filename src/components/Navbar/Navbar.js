@@ -26,9 +26,9 @@ const Navbar = props => {
                 </li> 
                 <li>
                     { isAuthenticated ? (
-                        <NavLink className='link' to = '/logout' activeClassName = 'link-active' exact>Sign Out</NavLink> 
+                        <NavLink className='link link-auth' to = '/logout' exact>Sign Out</NavLink> 
                     ) : (
-                        <NavLink className='link' to = '/auth' activeClassName = 'link-active' exact>Sign In</NavLink> 
+                        <NavLink className='link link-auth' to = '/auth' exact>Sign In</NavLink> 
                     ) }
                 </li>       
             </ul>

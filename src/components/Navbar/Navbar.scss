@@ -23,13 +23,24 @@
 
         .link {
             color: $color-white;
-            font-size: 1.25rem;
+            font-size: 15px;
             font-family: 'Mulish', 'sans-serif';
             font-weight: 400;
             text-decoration: none;
             transition: all .3s;
             padding-bottom: 5px;
             border-bottom: 1px solid transparent;
+
+            &-auth {
+                padding: 5px 30px;
+                border: 1px solid $color-white;
+                border-radius: 15px;
+
+                &:hover {
+                    background-color: $color-white;
+                    color: $bg-color-secondary;
+                }
+            }
 
             &-active {
                 border-bottom: 1px solid $color-white;
