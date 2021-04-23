@@ -13,6 +13,7 @@ const campGroup = props => {
                     name = { camp.name }
                     shortDescription = { camp.shortDescription }
                     imageName = { camp.image }
+                    location = { camp.location }
                     clicked = { props.clicked }
                     onCampClick = { () => props.onCampClick({
                         name: camp.name,

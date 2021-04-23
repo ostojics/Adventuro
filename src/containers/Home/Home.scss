@@ -6,11 +6,11 @@
 
     &-head {
         height: 100vh;
-        background-image: url('../../images/hero.jpg');
+        background-image: linear-gradient(0deg,rgba(44,44,44, .2),rgba(17, 33, 92, .6)), url(../../images/bgImg.jpg);
         background-size: 100% 100%;
 
         &--text {
-            height: 55vh;
+            height: 45vh;
             justify-content: center;
         }
 
@@ -21,19 +21,25 @@
             text-decoration: none;
             font-size: 1.125rem;
             font-family: 'Mulish', 'sans-serif';
-            background-color: $color-white;
-            padding: 1.25rem 2.5rem;
-            color: $color-black;
+            background: #cb2d3e;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */                      
+            padding: 15px 35px;
+            box-shadow: 0px 0px 15px #ef473a;
+            color: $color-white;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 35px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 10%;
+            transition: all .2s;
+            backface-visibility: none;
 
             &:hover {
-                background-color: darken($color-white, 15%);
+                box-shadow: 0 0.5em 0.5em -0.4em #ef473a;
+                transform: translateY(-0.25em);
             }
         }
     }

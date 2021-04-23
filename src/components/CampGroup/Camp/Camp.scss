@@ -1,55 +1,43 @@
 @import "../../../scss/variables";
 
 .camp {
-    height: 14.9375rem;
-    padding: 20px;
-    border-radius: 1.25rem;
-    background-color: $bg-color-secondary;
+    height: 16.25rem;
+    border-radius: 15px;
     display: flex;
+    background-image: linear-gradient(0deg, rgba(44,44,44,.4), rgba(44,44,44,.4));
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    transition: all .2s;
+    border: 3px solid $bg-color;
 
-    &-description {
+    img {
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+    .details {
+        position: absolute;
+        bottom: 0.625rem;
+        left: 1.25rem;
+        right: 0.625rem;
+        margin: 0 auto;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
 
-        &--text {
-
-            width: 70%;
-            margin-right: 15px;
-
-            h3 {
-                font-family: 'Mulish', 'sans-serif';
-                font-weight: 600;
-                font-size: 23px;
-                color: $text-primary;
-                margin: 0;
-            }
-
-            p {
-                font-family: 'Mulish', 'sans-serif';
-                font-weight: 400;
-                font-size: 12px;
-                line-height: 163.15%;
-                color: rgba($text-primary, .8%);
-            }
-        }
-
-        &--image {
-            border-radius: 1rem;
-            width: 18.75rem;
-            height: 9.375rem;
-
-            img {
-                border-radius: 10%;
-            }
+        h3 {
+            color: $bg-color-secondary;
+            font-family: 'Mulish', 'sans-serif';
+            font-weight: 400;
+            padding: 0.625rem 1.875rem;
+            border-radius: 1.875rem;
+            font-size: 16px;
+            background-color: $color-white;
         }
     }
 
     &:hover {
         cursor: pointer;
+        border: 3px solid $color-white;
     }
 }
