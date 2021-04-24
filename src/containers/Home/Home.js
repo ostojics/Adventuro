@@ -36,6 +36,10 @@ const Home = props => {
         return state.campSlc.optionsSelectedNum;
     })
 
+    const ctaClickHandler = () => {
+        document.getElementById("categories").scrollIntoView({ behavior: "smooth" });
+    }
+
     return(
         <Fragment>
             <section className='section-head'>
@@ -49,7 +53,7 @@ const Home = props => {
                             Change the way you live, closer to nature
                         </p>
                     </div>
-                    <a className = 'cta' href="#categories">Explore</a>
+                    <a className = 'cta' onClick = { ctaClickHandler }>Explore</a>
                 </div>
             </section>
             <section id='section-categories' className='section-categories mt-5'>

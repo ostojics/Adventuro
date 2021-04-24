@@ -47,7 +47,7 @@ const Camp = props => {
         <div onClick = { props.onCampClick }>
             <div className = 'camp' onClick = { props.clicked }>
                 <div className = 'details'>
-                    <h3><i class="fas fa-map-marker-alt"></i> { props.location }</h3>
+                    <h3><i className ="fas fa-map-marker-alt"></i> { props.location }</h3>
                 </div>
                 <img src = { image } width = '100%' height = '100%' />
             </div>

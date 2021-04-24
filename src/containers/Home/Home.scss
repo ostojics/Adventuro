@@ -1,7 +1,6 @@
 
 @import '../../scss/variables';
 
-
 .section {
 
     &-head {
@@ -40,6 +39,7 @@
             &:hover {
                 box-shadow: 0 0.5em 0.5em -0.4em #ef473a;
                 transform: translateY(-0.25em);
+                cursor: pointer;
             }
         }
     }

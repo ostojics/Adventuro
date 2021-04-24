@@ -1,9 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from "react-router-dom";
 import './Navbar.scss';
 
 const Navbar = props => {
+    const { pathname } = useLocation();
+
+    const dispatch = useDispatch();
+    const onAuthRedirect = () => dispatch({ type:'AUTH_REDIRECT', link: pathname })
 
     const isAuthenticated = useSelector(state => {
         return state.auth.token !== null
@@ -28,7 +33,7 @@ const Navbar = props => {
                     { isAuthenticated ? (
                         <NavLink className='link link-auth' to = '/logout' exact>Sign Out</NavLink> 
                     ) : (
-                        <NavLink className='link link-auth' to = '/auth' exact>Sign In</NavLink> 
+                        <NavLink className='link link-auth' to = '/auth' exact onClick = { onAuthRedirect }>Sign In</NavLink> 
                     ) }
                 </li>       
             </ul>
