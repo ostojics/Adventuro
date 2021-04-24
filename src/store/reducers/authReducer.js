@@ -6,7 +6,8 @@ const initialState = {
     userId: null,
     error: null,
     loading: false,
-    email: null
+    email: null,
+    redirectedFrom: null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +29,10 @@ const reducer = (state = initialState, action) => {
 
         case actionTypes.AUTH_LOGOUT:
             return updateObject(state, { token: null, userId: null });
-            
+
+        case actionTypes.AUTH_REDIRECT:
+            return updateObject(state, { redirectedFrom: action.link });
+         
         default:
             return state;
 

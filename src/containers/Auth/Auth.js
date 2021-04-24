@@ -117,6 +117,10 @@ const Auth = props =>{
         return state.auth.token !== null;
     })
 
+    const redirectedFrom = useSelector(state => {
+        return state.auth.redirectedFrom;
+    })
+
     const onAuth = (email, password, method) => dispatch(actions.auth(email, password, method));
    
     const methodChangeHandler = () => {
@@ -236,7 +240,7 @@ const Auth = props =>{
     }
 
     if(isAuthenticated) {
-        props.history.push('/');
+        props.history.push(`${redirectedFrom}`);
     }
 
     let form = (

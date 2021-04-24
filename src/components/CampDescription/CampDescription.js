@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import './CampDescription.scss';
@@ -28,6 +29,15 @@ const ELEMENTS_OPTIONS = {
 const stripePromise = loadStripe("pk_test_51IgbDWHiy8J2sZTXxRgCLN9pONmD8I8ABcvEhjWHFWSRO8EWPVyxXbWoanjMDCmf2oPTmwbAe2AjyhMjI1pjuHB600sgLVpUyr");
 
 const CampDescription = props => {
+    const { pathname } = useLocation();
+    
+    const dispatch = useDispatch();
+    const onAuthRedirect = () => dispatch({ type:'AUTH_REDIRECT', link: pathname })
+
+    const onButtonClickHandler = () => {
+        onAuthRedirect();
+        props.history.push('/auth');
+    }
 
     const details = useSelector(state => {
         return state.campDtls.campDetails
@@ -75,11 +85,11 @@ const CampDescription = props => {
 
     return (
         <section className='camp-desc'>
+             <div className='camp-desc--image'>
+                <ArrowIcon width="25px" height="25px" className='camp-desc--image__icon' onClick = { () => props.history.push('/camps') }/>
+                <img src= { imageName } alt = 'camp' width='100%' height='100%' />
+            </div>
             <div className='container'>
-                <div className='camp-desc--image'>
-                    <ArrowIcon className='camp-desc--image__icon' onClick = { () => props.history.goBack() }/>
-                    <img src= { imageName } alt = 'camp' width='100%' height='100%' />
-                </div>
                 <div className='line'></div>
                 <h2 className='camp-desc--title text-center'>{ details.name }</h2>
                 <div className='camp-desc--content'>
@@ -88,7 +98,7 @@ const CampDescription = props => {
                         <p>Location: { details.location }</p>
                         <p>Duration: { details.duration }</p>
                         <p>Price: ${ details.price } </p>
-                        { !isAuthenticated && <button onClick = { () => props.history.push('/auth') }>Sign In to Book</button>  }
+                        { !isAuthenticated && <button onClick = { onButtonClickHandler }>Sign In to Book</button>  }
                     </div>
                 </div>
                 { isAuthenticated && (

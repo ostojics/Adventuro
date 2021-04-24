@@ -6,7 +6,6 @@ import * as actions from '../../store/actions/index';
 const Logout = props => {
 
     const dispatch = useDispatch();
-
     const onLogout = () => dispatch(actions.logout());
 
     useEffect(() => {
