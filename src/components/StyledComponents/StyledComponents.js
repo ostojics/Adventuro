@@ -41,7 +41,7 @@ export const StyledSubmit = styled.button`
     background-color: ${props => props.disabled ? '#909fdb' : '#CAD1EE'};
     ${ props => props.disabled ? 'cursor: initial' : 'cursor: pointer;' }
     color: #181F38;
-    border: 0;
+    border: none;
     border-radius: 5px;
     transition: all .2s;
 

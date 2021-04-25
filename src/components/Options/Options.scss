@@ -1,12 +1,18 @@
+@import '../../scss/mixins';
+
 
 .options {
-   /* display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 60%; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 55%;
     margin: 0 auto; 
     margin-top: 4.375rem;
+
+    @include respond(tab-land) {
+        width: 57%;
+    }
+
+    @media only screen and (max-width: 68.75em) {
+        width: 65%;
+    }
 }
