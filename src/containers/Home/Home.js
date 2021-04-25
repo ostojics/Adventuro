@@ -53,7 +53,7 @@ const Home = props => {
                             Change the way you live, closer to nature
                         </p>
                     </div>
-                    <a className = 'cta' onClick = { ctaClickHandler }>Explore</a>
+                    <button className = 'cta' onClick = { ctaClickHandler }>Explore</button>
                 </div>
             </section>
             <section id='section-categories' className='section-categories mt-5'>

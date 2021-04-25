@@ -93,11 +93,11 @@ const CampDescription = props => {
                 <div className='line'></div>
                 <h2 className='camp-desc--title text-center'>{ details.name }</h2>
                 <div className='camp-desc--content'>
-                    <p>{ details.description }</p>
+                    <p className='camp-desc--content__text'>{ details.description }</p>
                     <div className='camp-desc--content__details'>
-                        <p>Location: { details.location }</p>
-                        <p>Duration: { details.duration }</p>
-                        <p>Price: ${ details.price } </p>
+                        <p className='camp-desc--content__details--text'>Location: { details.location }</p>
+                        <p className='camp-desc--content__details--text'>Duration: { details.duration }</p>
+                        <p className='camp-desc--content__details--text'>Price: ${ details.price } </p>
                         { !isAuthenticated && <button onClick = { onButtonClickHandler }>Sign In to Book</button>  }
                     </div>
                 </div>

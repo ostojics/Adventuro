@@ -1,4 +1,6 @@
 @import '../../scss/variables';
+@import '../../scss/mixins';
+
 
 .camp-desc {
 
@@ -60,11 +62,16 @@
         width: 90%;
         margin: 0 auto;
 
-        p {
+        &__text {
             font-family: 'Mulish', 'sans-serif';
             font-weight: 400;
             line-height: 160%;
             color: $text-primary;
+
+            @include respond(tab-land) {
+               font-size: 14px;
+               line-height: 180%;
+            }
         }
 
         &__details {
@@ -74,10 +81,16 @@
             border-radius: 0.625rem;
             background-color: $bg-color-secondary;
 
-            p {
+            &--text {
                 font-size: 1.875rem;
                 font-family: 'Mulish', 'sans-serif';
-                font-weight: 600;
+                font-weight: 400;
+                color: $color-white;
+                line-height: 130%;
+
+                @include respond(tab-land) {
+                    font-size: 1.5625rem;
+                }
             }
 
             button {
@@ -96,6 +109,10 @@
                 &:hover {
                     cursor: pointer;
                     background-color: darken($color-white, 20%);
+                }
+
+                @include respond(tab-land) {
+                    font-size: 13px;
                 }
             }
         }
