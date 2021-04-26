@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 .option {
 
@@ -7,19 +8,6 @@
     justify-content: center;
     align-items: center;
 
-    &-card {
-        padding: 1.25rem;
-        background-color: $bg-color-secondary;
-        border-radius: 20px;
-        border: 5px solid transparent;
-        transition: all .2s;
-        cursor: pointer;
-
-        &:hover {
-            border: 5px solid #6573B5;
-        }
-    }
-    
     &-text {
         font-size: 0.9375rem;
         color: $text-primary;
@@ -27,15 +15,22 @@
         font-weight: 400;
         margin: 0;
         margin-top: 0.625rem;
+
+        @include respond(tablet) {
+            font-size: 0.8125rem;
+        }
     }
 
 }
-
-
 
 .Icon {
     width: 5.75rem;
     height: 5rem;
     fill: #4F5F97;
+
+    @include respond(tablet) {
+        width: 4.5rem;
+        height: 3.75rem;
+    }
 }
 

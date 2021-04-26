@@ -15,8 +15,8 @@
 
     @include respond(laptop) {
         height: 14.375rem;
-    }    
-
+    }   
+    
     img {
         border-radius: 15px;
         z-index: -1;
@@ -43,6 +43,12 @@
                 font-size: 0.6875rem;
                 padding: 0.625rem 1.5625rem;
             }
+
+            @include respond(tablet) {
+                font-size: 13px;
+                padding: 10px 28px;
+            }
+
         }
     }
 

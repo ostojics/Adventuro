@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .campGroup {
 
@@ -19,6 +20,10 @@
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         gap: 1.875rem;
+
+        @include respond(tablet) {
+            grid-template-columns: 1fr;
+        }
     }
 
 }
