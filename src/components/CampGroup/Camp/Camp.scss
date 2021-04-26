@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss//mixins";
 
 .camp {
     height: 16.25rem;
@@ -11,6 +12,10 @@
     position: relative;
     transition: all .2s;
     border: 3px solid $bg-color;
+
+    @include respond(laptop) {
+        height: 14.375rem;
+    }    
 
     img {
         border-radius: 15px;
@@ -31,8 +36,13 @@
             font-weight: 400;
             padding: 0.625rem 1.875rem;
             border-radius: 1.875rem;
-            font-size: 16px;
+            font-size: 1rem;
             background-color: $color-white;
+
+            @include respond(laptop) {
+                font-size: 0.6875rem;
+                padding: 0.625rem 1.5625rem;
+            }
         }
     }
 

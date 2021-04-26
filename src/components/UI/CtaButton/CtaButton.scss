@@ -1,31 +1,31 @@
-
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 
 .primary {
-        color: $color-black;
-        background-color: $text-primary;
-        padding: 0.625rem 6.25rem;
-        box-shadow: 0px 4px 20px 5px rgba(202,209,238, 0.08);
-        border-radius: 1.25rem;
-        border: none;
-        cursor: pointer;
-        transition: all .2s;
-        margin-left: 0.9375rem;
+    color: $color-black;
+    background-color: $text-primary;
+    padding: 0.625rem 6.25rem;
+    box-shadow: 0px 4px 20px 5px rgba(202,209,238, 0.08);
+    border-radius: 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+    margin-left: 0.9375rem;
 
-        &:hover {
-            background-color: darken($text-primary, 10%);
-        }
+    &:hover {
+        background-color: darken($text-primary, 10%);
+    }
 
-        &:disabled {
+    &:disabled {
+        pointer-events: none;
+        background-color: darken($text-primary, 20%);
+    }
 
-            background-color: darken($text-primary, 20%);
-
-            &:hover {
-                background-color: darken($text-primary, 20%);
-                cursor: initial;
-            }
-        }
+    @include respond(tablet) {
+        margin-left: 0;
+        margin-bottom: 0.625rem;
+    }
 }
 
 .ghost {

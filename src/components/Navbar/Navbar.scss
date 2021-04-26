@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .navbar-secondary {
     display: flex;
@@ -11,6 +12,10 @@
             font-size: 2.1875rem;
             font-family: 'Mulish', 'sans-serif';
             font-weight: 600;
+
+            @include respond(laptop) {
+                font-size: 1.875rem;
+            }
         }
     }
 
@@ -23,13 +28,17 @@
 
         .link {
             color: $color-white;
-            font-size: 15px;
+            font-size: 0.9375rem;
             font-family: 'Mulish', 'sans-serif';
             font-weight: 400;
             text-decoration: none;
             transition: all .3s;
             padding-bottom: 5px;
             border-bottom: 1px solid transparent;
+
+            @include respond(laptop) {
+                font-size: 0.75rem;
+            }
 
             &-auth {
                 padding: 5px 30px;

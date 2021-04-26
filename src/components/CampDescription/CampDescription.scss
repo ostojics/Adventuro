@@ -7,6 +7,10 @@
     .container {
         margin-top: 3rem;
         margin-bottom: 5rem;
+
+        @include respond(laptop) {
+            margin-top: 2rem;
+        }
     }
 
     .line {
@@ -20,6 +24,9 @@
         position: relative;
         margin-top: 2rem;
         background-image: linear-gradient(0deg, rgba(44,44,44,.2), rgba(44,44,44,.2));
+        @include respond(laptop) {
+            height: 55vh;
+        }
 
         &__icon {
             position: absolute;
@@ -54,6 +61,10 @@
         margin: 0;
         margin-top: 1.25rem;
         margin-bottom: 5rem;
+
+        @include respond(laptop) {
+            font-size: 2.1875rem;
+        }
     }
 
     &--content {
@@ -69,17 +80,26 @@
             color: $text-primary;
 
             @include respond(tab-land) {
-               font-size: 14px;
+               font-size: 0.875rem;
                line-height: 180%;
+            }
+
+            @include respond(laptop) {
+                font-size: 12px;
+                line-height: 190%;
             }
         }
 
         &__details {
             width: 60%;
             justify-self: center;
-            padding: 2.5rem;
+            padding: 40px;
             border-radius: 0.625rem;
             background-color: $bg-color-secondary;
+
+            @include respond(laptop) {
+                padding: 1.875rem;
+            }
 
             &--text {
                 font-size: 1.875rem;
@@ -90,6 +110,10 @@
 
                 @include respond(tab-land) {
                     font-size: 1.5625rem;
+                }
+
+                @include respond(laptop) {
+                    font-size: 1.375rem;
                 }
             }
 
@@ -112,7 +136,11 @@
                 }
 
                 @include respond(tab-land) {
-                    font-size: 13px;
+                    font-size: 0.8125rem;
+                }
+
+                @include respond(laptop) {
+                    font-size: 0.6875rem;
                 }
             }
         }
