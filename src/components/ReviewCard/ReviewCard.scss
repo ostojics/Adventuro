@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .review-card {
     padding: 1.25rem;
@@ -6,7 +7,13 @@
     background-color: $bg-color-secondary;
     height: 400px;
     
+    @include respond(laptop) {
+        padding: 17px;
 
+        .line-2 {
+            width: 4rem;
+        }
+    }
 
     &--text {
         font-family: 'Mulish', 'sans-serif';
@@ -15,6 +22,11 @@
         font-size: 1.125rem;
         color: rgba($text-primary, .8%);
         height: 40%;
+
+        @include respond(laptop) {
+            font-size: 16px;
+            line-height: 170%;
+        }
     }
 
     &--person {
@@ -25,8 +37,12 @@
             font-weight: 600;
             font-size: 1.875rem;
             color: $text-primary;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 1.25rem;
+            margin-bottom: 0.625rem;
+
+            @include respond(laptop) {
+                font-size: 1.5625rem;
+            }
         }
         
         &__date {
@@ -34,7 +50,12 @@
             font-weight: 400;
             color: rgba($text-primary, .8%);
             font-size: 1.25rem;
+
+            @include respond(laptop) {
+                font-size: 1.0625rem;
+            }
         }
 
     }
-}
+
+ }

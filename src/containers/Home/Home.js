@@ -40,6 +40,15 @@ const Home = props => {
         document.getElementById("categories").scrollIntoView({ behavior: "smooth" });
     }
 
+    const selectionButtonClickHandler = (type) => {
+        if(type === 'ghost') {
+            onSkipClick();
+        } else if(type === 'primary') {
+            onDoneClick();
+        }
+        props.history.push('/camps');
+    }
+
     return(
         <Fragment>
             <section className='section-head'>
@@ -69,15 +78,13 @@ const Home = props => {
                     optionDeselected = { onOptionDeselect }/>
                 </div>
                 <div className='buttons'>
-                    <div onClick = { onSkipClick }>
-                        <CtaButton type= { 'ghost' } click = { () =>  props.history.push('/camps') }>Skip</CtaButton>
-                    </div>
-                    <div onClick = { onDoneClick }>
-                        <CtaButton 
-                        type= { 'primary' } 
-                        click = { () =>  props.history.push('/camps') }
-                        disabled = { optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
-                    </div>
+                    <CtaButton 
+                    type= { 'ghost' } 
+                    click = { () => selectionButtonClickHandler('ghost') }>Skip</CtaButton>
+                    <CtaButton 
+                    type= { 'primary' } 
+                    click = { () => selectionButtonClickHandler('primary') }
+                    disabled = { optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
                 </div>
             </section>
         </Fragment>

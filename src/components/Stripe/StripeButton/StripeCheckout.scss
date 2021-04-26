@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 @keyframes fade {
     from {
@@ -16,6 +17,10 @@
     width: 40%;
     margin: 0 auto;
     margin-top: 3rem;
+
+    @include respond(laptop) {
+      width: 50%;
+    }
   }
   
   .FormGroup {

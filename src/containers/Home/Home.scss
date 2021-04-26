@@ -1,6 +1,6 @@
-
 @import '../../scss/variables';
 @import '../../scss/mixins';
+
 
 .section {
 
@@ -9,12 +9,22 @@
         background-image: linear-gradient(0deg,rgba(44,44,44, .2),rgba(17, 33, 92, .6)), url(../../images/bgImg.jpg);
         background-size: 100% 100%;
 
+        @include respond(tablet) {
+            background-size: cover;
+            background-position: center;
+        }
+        
         &--text {
             height: 45vh;
             justify-content: center;
 
             @include respond(tab-land) {
                 height: 38vh;
+            }
+
+            @include respond(tablet) {
+                height: 33vh;
+                margin-top: 45px;
             }
         }
 
@@ -45,6 +55,11 @@
                 transform: translateY(-0.25em);
                 cursor: pointer;
             }
+
+            @include respond(laptop) {
+                font-size: 0.9375rem;
+                padding: 15px 80px;
+            }
         }
     }
 
@@ -59,7 +74,7 @@
 }
 
 .line {
-    margin-top: 3.125rem;
+    margin-top: 50px;
 }
 
 .lead {
@@ -71,4 +86,22 @@
     display: flex;
     justify-content: center;
     margin: 4.375rem auto;
+
+    @include respond(tablet) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .primary {
+            order: 1;
+        }
+        
+        .ghost {
+            order: 2;
+        }
+
+        .primary, .ghost {
+            width: 100%;
+        }
+    }
 }
