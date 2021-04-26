@@ -10,6 +10,12 @@ export const StyledOptionCard = styled.div`
     &:hover {
         border: ${props => props.clicked ? '5px solid #EF6E6F' : '5px solid #6573B5'};
     }
+
+    @media (max-width: 48em) {
+        &:hover {
+            border: ${props => props.clicked ? '5px solid #EF6E6F' : '5px solid transparent'};
+        }
+    }
 `;
 
 export const StyledAuthButton = styled.button`
