@@ -21,6 +21,10 @@
     @include respond(laptop) {
       width: 50%;
     }
+
+    @include respond(tablet) {
+      width: 70%;
+    }
   }
   
   .FormGroup {

@@ -7,11 +7,6 @@
     margin: 0 auto;
 }
 
-/* Buttons */
-.btn {
-    
-}
-
 /* Line */
 .line {
     width: 9rem;
@@ -29,34 +24,4 @@
     }
 }
 
-/* Reviews Container */
-.reviews {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    width: 80%;
-    margin: 6rem auto;
-}
-
-/* TestimonialsForm */
-
-.TestimonialsForm {
-    background-color: $bg-color-secondary;
-    padding: 1.5625rem;
-    border-radius: 5px;
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, .2);
-    width: 40%;
-    margin: 0 auto;
-    margin-bottom: 3rem;
-
-    &-group {
-        color: $text-primary;
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        margin: 3rem 0;
-
-    }
-
-}
 

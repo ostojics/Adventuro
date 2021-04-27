@@ -1,4 +1,5 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import './Testimonials.scss';
 import Navbar from '../../components/Navbar/Navbar';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FormElement from '../../components/UI/FormElement/FormElement';
