@@ -1,4 +1,5 @@
 @import '../../scss/variables';
+@import '../../scss/mixins';
 
 .section-auth {
     background: -moz-linear-gradient(-25deg, rgba(#000, 1) 0%, rgba(#000, 1) 65%, rgba($bg-color-secondary, 1) 65%, rgba($bg-color-secondary, 1) 100%);
@@ -15,6 +16,10 @@
         height: 90vh;
         background-color: #161616;
         border-radius: 1.25rem;
+
+        @include respond(tablet) {
+            justify-content: center;
+        }
     }
 
     .form-wrapper {
@@ -22,6 +27,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        @include respond(tablet) {
+            width: 70%;
+        }
     }
 
     .text {
@@ -33,6 +42,10 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+
+        @include respond(tablet) {
+            display: none;
+        }
 
         &-container {
             margin-top: 8rem;
