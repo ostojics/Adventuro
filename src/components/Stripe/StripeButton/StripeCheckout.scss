@@ -25,6 +25,10 @@
     @include respond(tablet) {
       width: 70%;
     }
+
+    @include respond(mobile-L) {
+      width: 90%;
+    }
   }
   
   .FormGroup {

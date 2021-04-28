@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    padding-top: 20px;
 
     .logo {
         h1 {
@@ -13,9 +14,14 @@
             font-size: 2.1875rem;
             font-family: 'Mulish', 'sans-serif';
             font-weight: 600;
+            margin: 0;
 
             @include respond(laptop) {
                 font-size: 1.875rem;
+            }
+
+            @include respond(mobile-L) {
+                font-size: 25px;
             }
         }
     }
@@ -63,13 +69,17 @@
     }
 
     &-auth {
-        padding: 5px 30px;
+        padding: 0.3125rem 1.875rem;
         border: 1px solid $color-white;
         border-radius: 15px;
 
         &:hover {
             background-color: $color-white;
             color: $bg-color-secondary;
+        }
+
+        @include respond(tablet) {
+            padding: 0.3125rem 2.5rem;
         }
     }
 
@@ -93,9 +103,10 @@
     left: 0;
     z-index: 1;
     width: 70%;
-    height: 25rem;
+    height: 100vh;
     padding: 0;
     border-radius: 5px;
     list-style: none;
     margin: 0;
+    transition: all .6s ease;
 }

@@ -86,7 +86,7 @@ const CampDescription = props => {
     return (
         <section className='camp-desc'>
              <div className='camp-desc--image'>
-                <ArrowIcon width="25px" height="25px" className='camp-desc--image__icon' onClick = { () => props.history.push('/camps') }/>
+                <ArrowIcon className='camp-desc--image__icon' onClick = { () => props.history.push('/camps') }/>
                 <img src= { imageName } alt = 'camp' width='100%' height='100%' />
             </div>
             <div className='container'>

@@ -24,6 +24,7 @@ export const StyledAuthButton = styled.button`
     color: #F5F5F5;
     font-family: 'Mulish', 'sans-serif';
     font-weight: 400;
+    font-size: 0.8125rem;
     border: 0;
     outline: 0;
     border-radius: 1.25rem;
@@ -31,6 +32,11 @@ export const StyledAuthButton = styled.button`
     margin-top: 3rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid transparent;
+
+    @media (max-width: 26.5625em) {
+        padding: 15px 70px;
+        font-size: 11.5px;
+    }
 
     &:hover {
         ${props => props.disabled ? 'cursor:initial;' : 'cursor: pointer;'}

@@ -3,8 +3,8 @@
     @if $breakpoint == phone-sm {
         @media only screen and (max-width: 25em) { @content };    //400px
     }
-    @if $breakpoint == phone {
-        @media only screen and (max-width: 37.5em) { @content };    //600px
+    @if $breakpoint == mobile-L {
+        @media only screen and (max-width: 26.5625em) { @content };    //425px
     }
     @if $breakpoint == tablet {
         @media only screen and (max-width: 48em) { @content };    //768px

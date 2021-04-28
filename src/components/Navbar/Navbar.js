@@ -25,10 +25,10 @@ const Navbar = props => {
         setHamburgerClicked(prevState => !prevState);
         toggleNavMenu(prevState => !prevState);
     }
-
+    
     return (
         <Fragment>
-             <ul className = 'mobile-menu' style = { navMenu ? {display: 'flex'} : {display: 'none'} }>
+             <ul className = { `mobile-menu` } style = { navMenu ? {transform: 'translateX(0)'} : {transform: 'translateX(-100%)'} }>
                 { navLinks.map(link => {
                     return (
                     <li>
