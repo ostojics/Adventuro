@@ -17,6 +17,7 @@
         &--text {
             height: 45vh;
             justify-content: center;
+            margin-top: 1.875rem;
 
             @include respond(tab-land) {
                 height: 38vh;
@@ -24,8 +25,13 @@
 
             @include respond(tablet) {
                 height: 33vh;
-                margin-top: 45px;
+                margin-top: 2.8125rem;
             }
+
+            @include respond(mobile-L) {
+                margin-top: 3.125rem;
+            }
+
         }
 
         .cta {
@@ -58,11 +64,23 @@
 
             @include respond(laptop) {
                 font-size: 0.9375rem;
-                padding: 15px 80px;
+                padding: 0.9375rem 5rem;
+            }
+
+            @include respond(mobile-L) {
+                font-size: 13px;
+                padding: 12px 60px;
             }
         }
     }
 
+    &-categories {
+        margin-top: 3.125rem;
+
+        @include respond(mobile-L) {
+            margin-top: 25px;
+        }
+    }
 
 }
 
@@ -74,7 +92,7 @@
 }
 
 .line {
-    margin-top: 50px;
+    margin-top: 3.125rem;
 }
 
 .lead {
@@ -103,5 +121,10 @@
         .primary, .ghost {
             width: 100%;
         }
+    }
+
+    @include respond(mobile-L) {
+        width: 60%;
+        margin: 3.125rem auto;
     }
 }

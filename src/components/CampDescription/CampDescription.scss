@@ -21,6 +21,10 @@
             height: 3px;    
             margin-top: 3rem;
         }
+
+        @include respond(mobile-L) {
+            margin-top: 1.5rem;
+        }
     }
     
     &--image {
@@ -51,10 +55,17 @@
             border-radius: 5px;
             background-color: transparent;
             transition: all .2s;
+            width: 1.5625rem;
+            height: 1.5625rem;
 
             &:hover {
                 cursor: pointer;
                  background-color: rgba(#909090, .40%);
+            }
+
+            @include respond(mobile-L) {
+                width: 17px;
+                height: 17px;
             }
         }
         
@@ -85,6 +96,13 @@
         @include respond(tablet) {
             font-size: 1.875rem;
         }
+
+        @include respond(mobile-L) {
+            margin-bottom: 2rem;
+            margin-top: 0.625rem;
+            font-size: 1.5625rem;
+            margin-bottom: 0.9375rem;
+        }
     }
 
     &--content {
@@ -92,6 +110,11 @@
         grid-template-columns: repeat(2, 1fr);
         width: 90%;
         margin: 0 auto;
+
+        @include respond(mobile-L) {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
         &__text {
             font-family: 'Mulish', 'sans-serif';
@@ -107,6 +130,10 @@
             @include respond(laptop) {
                 font-size: 0.75rem;
                 line-height: 190%;
+            }
+
+            @include respond(mobile-L) {
+                text-align: center;
             }
 
         }

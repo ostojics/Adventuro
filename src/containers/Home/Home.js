@@ -54,7 +54,7 @@ const Home = props => {
             <section className='section-head'>
                 <div className='container'>
                 <Navbar />
-                    <div className = { 'section-head--text flex flex-column mt-3' }>
+                    <div className = { 'section-head--text flex flex-column' }>
                         <h1 className = { 'heading-head' }>
                             New way of living
                         </h1>
@@ -65,7 +65,7 @@ const Home = props => {
                     <button className = 'cta' onClick = { ctaClickHandler }>Explore</button>
                 </div>
             </section>
-            <section id='section-categories' className='section-categories mt-5'>
+            <section id='section-categories' className='section-categories'>
                 <div className='container text-center'>
                     <div className='line'></div>
                     <h1 className='heading-primary mt-2'>Tell us what you love</h1>

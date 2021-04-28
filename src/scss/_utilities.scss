@@ -15,7 +15,11 @@
         }   
         
         @include respond(tablet) {
-            font-size: 45px;
+            font-size: 2.8125rem;
+        }
+        
+        @include respond(mobile-L) {
+            font-size: 30px;
         }
     }
 
@@ -27,7 +31,11 @@
         margin: 0;
 
         @include respond(tablet) {
-            font-size: 45px;
+            font-size: 2.8125rem;
+        }
+        
+        @include respond(mobile-L) {
+            font-size: 1.875rem;
         }
 
         &-md {
@@ -39,6 +47,10 @@
 
             @include respond(laptop) {
                 font-size: 2.8125rem;
+            }
+
+            @include respond(mobile-L) {
+                font-size: 33px;
             }
         }
     }
@@ -62,6 +74,10 @@
         font-size: 1rem;
     }
 
+    @include respond(mobile-L) {
+        font-size: 13px;
+    }
+
     &-head {
         color: rgba($color-white, .8);
         font-family: 'Mulish', 'sans-serif';
@@ -75,6 +91,10 @@
 
         @include respond(tablet) {
             font-size: 1rem;
+        }
+
+        @include respond(mobile-L) {
+            font-size: 0.6875rem;
         }
     }
 }
