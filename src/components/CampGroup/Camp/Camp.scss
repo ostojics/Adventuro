@@ -20,6 +20,10 @@
     @include respond(mobile-L) {
         height: 10.3125rem;
     }
+
+    @include respond(mobile-M) {
+        height: 150px;
+    }
     
     img {
         border-radius: 15px;

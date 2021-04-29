@@ -21,7 +21,11 @@
             }
 
             @include respond(mobile-L) {
-                font-size: 25px;
+                font-size: 1.5625rem;
+            }
+
+            @include respond(mobile-M) {
+                font-size: 1.25rem;
             }
         }
     }
@@ -40,11 +44,19 @@
 
     .fas.fa-bars, .fas.fa-times {
         color: $color-white;
-        font-size: 30px;
+        font-size: 1.875rem;
         display: none;
 
         @include respond(tablet) {
             display: block;
+        }
+
+        @include respond(mobile-L) {
+            font-size: 1.5625rem;
+        }
+
+        @include respond(mobile-M) {
+            font-size: 1.25rem;
         }
     }
 
@@ -66,6 +78,10 @@
 
     @include respond(tablet) {
         font-size: 18px;
+    }
+
+    @include respond(mobile-M) {
+        font-size: 0.9375rem;
     }
 
     &-auth {

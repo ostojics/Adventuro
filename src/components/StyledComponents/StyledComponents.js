@@ -57,6 +57,10 @@ export const StyledSubmit = styled.button`
     border-radius: 5px;
     transition: all .2s;
 
+    @media (max-width: 23.4375em) {
+        font-size: 0.8125rem;
+    }
+
     &:hover {
         background-color: #909fdb;
     }

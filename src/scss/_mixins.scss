@@ -1,7 +1,10 @@
 
 @mixin respond($breakpoint) {
-    @if $breakpoint == phone-sm {
-        @media only screen and (max-width: 25em) { @content };    //400px
+    @if $breakpoint == mobile-S {
+        @media only screen and (max-width: 20em) { @content }; //320px
+    }
+    @if $breakpoint == mobile-M {
+        @media only screen and (max-width: 23.4375em) { @content }; //375px
     }
     @if $breakpoint == mobile-L {
         @media only screen and (max-width: 26.5625em) { @content };    //425px

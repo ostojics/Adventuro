@@ -5,14 +5,18 @@
     padding: 1.25rem;
     border-radius: 1.25rem;
     background-color: $bg-color-secondary;
-    height: 400px;
+    height: 25rem;
     
     @include respond(laptop) {
-        padding: 17px;
+        padding: 1.0625rem;
 
         .line-2 {
             width: 4rem;
         }
+    }
+
+    @include respond(mobile-M) {
+      
     }
 
     &--text {
@@ -24,8 +28,12 @@
         height: 40%;
 
         @include respond(laptop) {
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 170%;
+        }
+
+        @include respond(mobile-M) {
+            font-size: 0.875rem;
         }
     }
 
@@ -43,6 +51,12 @@
             @include respond(laptop) {
                 font-size: 1.5625rem;
             }
+
+            @include respond(mobile-M) {
+                font-size: 1.4375rem;
+                margin-top: 1.0625rem;
+                margin-bottom: 0.5rem;
+            }
         }
         
         &__date {
@@ -53,6 +67,10 @@
 
             @include respond(laptop) {
                 font-size: 1.0625rem;
+            }
+
+            @include respond(mobile-M) {
+                font-size: 0.9375rem;
             }
         }
 

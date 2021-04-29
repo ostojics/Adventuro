@@ -32,6 +32,11 @@
                 margin-top: 3.125rem;
             }
 
+            @include respond(mobile-S) {
+                margin-top: 5rem;
+                height: 25vh;
+            }
+
         }
 
         .cta {
@@ -68,8 +73,13 @@
             }
 
             @include respond(mobile-L) {
-                font-size: 13px;
-                padding: 12px 60px;
+                font-size: 0.8125rem;
+                padding: 0.75rem 3.75rem;
+            }
+
+            @include respond(mobile-S) {
+                font-size: 11px;
+                padding: 12px 50px;
             }
         }
     }
@@ -126,5 +136,9 @@
     @include respond(mobile-L) {
         width: 60%;
         margin: 3.125rem auto;
+    }
+
+    @include respond(mobile-S) {
+        width: 65%;
     }
 }

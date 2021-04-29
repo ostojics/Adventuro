@@ -9,6 +9,10 @@
     @include respond(tablet) {
         font-size: 0.8125rem;
     }
+
+    @include respond(mobile-M) {
+        font-size: 0.6875rem;
+    }
 }
 
 .Input {
@@ -26,6 +30,10 @@
     @include respond(tablet) {
         font-size: 1.4375rem;
     }
+
+    @include respond(mobile-M) {
+        font-size: 1.25rem;
+    }
 }
 
 .Textarea {
@@ -42,22 +50,6 @@
     font-size: 1.375rem;
     transition: all .2s;
  
-}
-
-.Submit {
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    outline: 0;
-    background-color: $text-primary;
-    padding: 10px 28px;
-    color: $bg-color-secondary;
-    font-size: 18px;
-    transition: all .2s;
-
-    &:hover {
-        background-color: darken($text-primary, 15%);
-    }
 }
 
 .Input-Invalid {

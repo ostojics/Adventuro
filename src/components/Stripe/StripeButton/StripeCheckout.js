@@ -7,6 +7,11 @@ import {
   useStripe
 } from "@stripe/react-stripe-js";
 
+let cardFontSize = '16px';
+if(window.screen.width <= 320) {
+  cardFontSize = '13px';
+}
+
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
@@ -14,8 +19,8 @@ const CARD_OPTIONS = {
       iconColor: "#c4f0ff",
       color: "#fff",
       fontWeight: 500,
+      fontSize: `${cardFontSize}`,
       fontFamily: "Roboto, sans-serif",
-      fontSize: "16px",
       fontSmoothing: "antialiased",
       ":-webkit-autofill": {
         color: "#fce883"
@@ -33,7 +38,7 @@ const CARD_OPTIONS = {
 
 const CardField = ({ onChange }) => (
   <div className="FormRow">
-    <CardElement options={CARD_OPTIONS} onChange={onChange} />
+    <CardElement options={CARD_OPTIONS} onChange={onChange}/>
   </div>
 );
 

@@ -26,4 +26,9 @@
         gap: 1.0625rem;
         margin-top: 3.125rem;
     }
+
+    @include respond(mobile-S) {
+        width: 70%;
+    }
+
 }
