@@ -24,17 +24,18 @@
             }
 
             @include respond(tablet) {
-                height: 33vh;
+                height: 40vh;
                 margin-top: 2.8125rem;
             }
 
             @include respond(mobile-L) {
+                height: 35vh;
                 margin-top: 3.125rem;
             }
 
             @include respond(mobile-S) {
                 margin-top: 5rem;
-                height: 25vh;
+                height: 30vh;
             }
 
         }
