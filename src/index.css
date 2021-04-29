@@ -1,15 +1,18 @@
+
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #0E1323;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0E1323;
 }
 
-/*html {
-  scroll-behavior: smooth;
-}*/
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+@media (max-width: 20em) {
+    html {
+      font-size: 87.5%;
+    }
 }

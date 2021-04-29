@@ -17,13 +17,17 @@
     @include respond(mobile-L) {
         width: 70%;
     }
+
+    @include respond(mobile-M) {
+        width: 90%;
+    }
 }
 
 .TestimonialsForm {
     background-color: $bg-color-secondary;
     padding: 1.5625rem;
     border-radius: 5px;
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, .2);
+    box-shadow: 0 0.625rem 1.875rem -0.9375rem rgba(0, 0, 0, .2);
     width: 40%;
     margin: 0 auto;
     margin-bottom: 3rem;

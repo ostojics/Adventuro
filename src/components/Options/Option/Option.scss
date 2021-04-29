@@ -32,5 +32,15 @@
         width: 4.5rem;
         height: 3.75rem;
     }
+
+    @include respond(mobile-M) {
+        width: 3.875rem;
+        height: 3.125rem;
+    }
+
+    @include respond(mobile-S) {
+        width: 58px;
+        height: 46px;
+    }
 }
 

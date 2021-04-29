@@ -26,6 +26,10 @@
         margin-left: 0;
         margin-bottom: 0.625rem;
     }
+
+    @include respond(mobile-M) {
+        font-size: 0.6875rem;
+    }
 }
 
 .ghost {
@@ -40,6 +44,10 @@
     &:hover {
         background-color: $text-primary;
         color: $color-black;
+    }
+
+    @include respond(mobile-M) {
+        font-size: 0.6875rem;
     }
 }
 

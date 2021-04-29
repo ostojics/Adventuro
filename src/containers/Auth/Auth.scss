@@ -97,6 +97,10 @@
             @include respond(mobile-L) {
                 width: 85%;
             }
+
+            @include respond(mobile-M) {
+                width: 90%;
+            }
         }
 
         &-switcher {

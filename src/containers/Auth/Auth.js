@@ -245,7 +245,7 @@ const Auth = props =>{
 
     let form = (
         <form className='AuthForm text-center' onSubmit={ submitHandler }>
-                <h2 className='AuthForm-title text-center'>Adventuro</h2>
+                { currentMethod === 'signIn' && <h2 className='AuthForm-title text-center'>Adventuro</h2> }
                 { formElements.map(formElement => {
                 return (
                     <div className='AuthForm-group' key = { formElement.id }>

@@ -29,6 +29,10 @@
     @include respond(mobile-L) {
       width: 90%;
     }
+
+    @include respond(mobile-M) {
+      width: 100%;
+    }
   }
   
   .FormGroup {
@@ -49,6 +53,11 @@
     align-items: center;
     margin-left: 15px;
     border-top: 1px solid #819efc;
+    font-size: 1rem;
+    
+    @include respond(mobile-M) {
+      font-size: 0.8125rem;
+    }
   }
   
   .FormRow:first-child {
@@ -64,6 +73,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-family: 'Mulish', 'sans-serif';
+
+    @include respond(mobile-M) {
+      font-size: 0.8125rem;
+    }
   }
   
   @keyframes void-animation-out {
@@ -80,7 +93,7 @@
   }
   
   .FormRowInput {
-    font-size: 16px;
+    font-size: 1rem;
     width: 100%;
     padding: 11px 15px 11px 0;
     color: #fff;
@@ -89,10 +102,22 @@
     border: none;
     transition: all .2s;
     outline: none;
+
+    @include respond(mobile-M) {
+      font-size: 0.8125rem;
+    }
   }
 
   .FormRowInput::placeholder {
     color: #87bbfd;
+  }
+
+  .InputElement {
+    font-size: 1rem;
+    
+    @include respond(mobile-M) {
+      font-size: 0.8125rem;
+    }
   }
   
   .StripeElement--webkit-autofill {
