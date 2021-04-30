@@ -8,6 +8,10 @@
     width: 80%;
     margin: 6rem auto;
 
+    @include respond(big-desktop) {
+        width: 60%;
+    }
+
     @include respond(tablet) {
         grid-template-columns: 1fr;
         width: 50%;
@@ -38,6 +42,10 @@
         flex-direction: column;
         align-items: left;
         margin: 3rem 0;
+    }
+
+    @include respond(big-desktop) {
+        width: 30%;
     }
 
     @include respond(mobile-L) {

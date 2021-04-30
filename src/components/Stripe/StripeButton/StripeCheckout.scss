@@ -18,6 +18,10 @@
     margin: 0 auto;
     margin-top: 3rem;
 
+    @include respond(big-desktop) {
+      width: 30%;
+    }
+
     @include respond(laptop) {
       width: 50%;
     }

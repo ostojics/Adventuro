@@ -52,6 +52,10 @@
             padding: 3rem;
             color: $color-white;
 
+            @include respond(big-desktop) {
+                margin-top: 14rem;
+            }
+
             h2 {
                 font-family: 'Poppins', 'sans-serif';
                 font-weight: 700;

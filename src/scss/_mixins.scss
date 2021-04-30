@@ -9,6 +9,9 @@
     @if $breakpoint == mobile-L {
         @media only screen and (max-width: 26.5625em) { @content };    //425px
     }
+    @if $breakpoint == tablet-2 {
+        @media only screen and (max-width: 46em) { @content };    //736px
+    }
     @if $breakpoint == tablet {
         @media only screen and (max-width: 48em) { @content };    //768px
     }

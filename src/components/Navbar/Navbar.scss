@@ -37,6 +37,10 @@
         list-style: none;
         width: 40%;
 
+        @include respond(big-desktop) {
+            width: 35%;
+        }
+
         @include respond(tablet) {
             display: none;
         }
