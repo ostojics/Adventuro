@@ -58,11 +58,11 @@ const Home = props => {
                         <h1 className = { 'heading-head' }>
                             New way of living
                         </h1>
-                        <p className = { 'lead-head' }>
+                        <p className = { 'lead-head mb-5' }>
                             Change the way you live, closer to nature
                         </p>
+                        <button className = 'cta' onClick = { ctaClickHandler }>Explore</button>
                     </div>
-                    <button className = 'cta' onClick = { ctaClickHandler }>Explore</button>
                 </div>
             </section>
             <section id='section-categories' className='section-categories'>
@@ -70,21 +70,21 @@ const Home = props => {
                     <div className='line'></div>
                     <h1 className='heading-primary mt-2'>Tell us what you love</h1>
                     <p className='lead'>So we can show you what you’ll like</p>
-                </div>
-                <div id='categories'>
-                    <Options 
-                    options = { options } 
-                    optionSelected = { onOptionSelect }
-                    optionDeselected = { onOptionDeselect }/>
-                </div>
-                <div className='buttons'>
-                    <CtaButton 
-                    type= { 'ghost' } 
-                    click = { () => selectionButtonClickHandler('ghost') }>Skip</CtaButton>
-                    <CtaButton 
-                    type= { 'primary' } 
-                    click = { () => selectionButtonClickHandler('primary') }
-                    disabled = { optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
+                    <div id='categories'>
+                        <Options 
+                        options = { options } 
+                        optionSelected = { onOptionSelect }
+                        optionDeselected = { onOptionDeselect }/>
+                    </div>
+                    <div className='buttons'>
+                        <CtaButton 
+                        type= { 'ghost' } 
+                        click = { () => selectionButtonClickHandler('ghost') }>Skip</CtaButton>
+                        <CtaButton 
+                        type= { 'primary' } 
+                        click = { () => selectionButtonClickHandler('primary') }
+                        disabled = { optionsSelectedNum > 0 ? false : true }>Done</CtaButton>
+                    </div>
                 </div>
             </section>
         </Fragment>

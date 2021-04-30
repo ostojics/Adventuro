@@ -38,6 +38,11 @@ export const StyledAuthButton = styled.button`
         font-size: 11.5px;
     }
 
+    @media (max-width: 20em) {
+        padding: 15px 60px;
+        font-size: 10px;
+    }
+
     &:hover {
         ${props => props.disabled ? 'cursor:initial;' : 'cursor: pointer;'}
         ${props => props.disabled ? 'background-color: #090b14' : 'background-color: #151b31'};

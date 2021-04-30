@@ -7,11 +7,6 @@ import {
   useStripe
 } from "@stripe/react-stripe-js";
 
-let cardFontSize = '16px';
-if(window.screen.width <= 320) {
-  cardFontSize = '13px';
-}
-
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
@@ -19,7 +14,7 @@ const CARD_OPTIONS = {
       iconColor: "#c4f0ff",
       color: "#fff",
       fontWeight: 500,
-      fontSize: `${cardFontSize}`,
+      fontSize: '14px',
       fontFamily: "Roboto, sans-serif",
       fontSmoothing: "antialiased",
       ":-webkit-autofill": {

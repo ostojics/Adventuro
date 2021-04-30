@@ -15,7 +15,7 @@
         }
         
         &--text {
-            height: 45vh;
+            height: 55vh;
             justify-content: center;
             margin-top: 1.875rem;
 
@@ -70,17 +70,23 @@
 
             @include respond(laptop) {
                 font-size: 0.9375rem;
-                padding: 0.9375rem 5rem;
+                padding: 0.9375rem 5rem; 
             }
+
 
             @include respond(mobile-L) {
                 font-size: 0.8125rem;
                 padding: 0.75rem 3.75rem;
+                
+            }
+
+            @include respond(mobile-M) {
+                padding: 0.75rem 3.75rem;
             }
 
             @include respond(mobile-S) {
-                font-size: 11px;
-                padding: 12px 50px;
+                font-size: 0.6875rem;
+                padding: 0.75rem 3.125rem;
             }
         }
     }
@@ -120,6 +126,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 60%;
 
         .primary {
             order: 1;
@@ -135,11 +142,7 @@
     }
 
     @include respond(mobile-L) {
-        width: 60%;
+        width: 85%;
         margin: 3.125rem auto;
-    }
-
-    @include respond(mobile-S) {
-        width: 65%;
-    }
+    } 
 }
