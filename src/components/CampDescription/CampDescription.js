@@ -5,8 +5,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import './CampDescription.scss';
 
-import * as actions from '../../store/actions/index';
-
 import camp1 from '../../images/camp1.jpg';
 import camp2 from '../../images/camp2.jpg';
 import kayak1 from '../../images/kayak1.jpg';
@@ -86,7 +84,7 @@ const CampDescription = props => {
     return (
         <section className='camp-desc'>
              <div className='camp-desc--image'>
-                <ArrowIcon className='camp-desc--image__icon' onClick = { () => props.history.push('/camps') }/>
+                <ArrowIcon className='arrow' onClick = { () => props.history.push('/camps') }/>
                 <img src= { imageName } alt = 'camp' width='100%' height='100%' />
             </div>
             <div className='container'>
@@ -102,7 +100,7 @@ const CampDescription = props => {
                     </div>
                 </div>
                 { isAuthenticated && (
-                    <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
+                    <Elements stripe={stripePromise} options={ ELEMENTS_OPTIONS }>
                         <CheckoutForm email = { userEmail } price = { details.price }/>
                     </Elements>
                 ) }

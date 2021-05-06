@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Auth.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 
 import AuthInput from '../../components/UI/AuthInput/AuthInput';
 import AuthButton from '../../components/UI/AuthButton/AuthButton';
@@ -287,6 +288,7 @@ const Auth = props =>{
     return (
         <section className='section-auth'>
             <div className='wrapper'>
+                <Arrow className = 'arrow' onClick = { () => props.history.goBack() }/>
                 <div className='text'>
                     <div className='text-container'>
                         <h2>Nature awaits</h2>
