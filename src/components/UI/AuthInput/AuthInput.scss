@@ -13,6 +13,27 @@
     border: none;
     border-radius: 5px 5px 0px 0px;
 
+    
+    &::-webkit-input-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &:-moz-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &::-moz-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &:-ms-input-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &::placeholder {
+        color: rgba($color-white, .3);
+    }
+
     @include respond(tablet) {
         border-radius: 5px;
     }

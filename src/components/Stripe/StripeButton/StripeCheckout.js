@@ -162,8 +162,7 @@ const CheckoutForm = props => {
         Payment successful
       </div>
       <div className="ResultMessage">
-        Thanks for trying Stripe Elements. No money was charged, but we
-        generated a PaymentMethod: {paymentMethod.id}
+        Thank you! This was only a test payment and no money was charged.
       </div>
       <ResetButton onClick={reset} />
     </div>
@@ -221,14 +220,6 @@ const CheckoutForm = props => {
       </SubmitButton>
     </form>
   );
-};
-
-const ELEMENTS_OPTIONS = {
-  fonts: [
-    {
-      cssSrc: "https://fonts.googleapis.com/css?family=Roboto"
-    }
-  ]
 };
 
 export default CheckoutForm;

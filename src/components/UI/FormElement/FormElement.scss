@@ -27,6 +27,26 @@
     font-family: 'Mulish', 'sans-serif';
     transition: all .2s;
 
+    &::-webkit-input-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &:-moz-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &::-moz-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &:-ms-input-placeholder {
+        color: rgba($color-white, .3);
+    }
+
+    &::placeholder {
+        color: rgba($color-white, .3);
+    }
+
     @include respond(tablet) {
         font-size: 1.4375rem;
     }
@@ -49,7 +69,7 @@
     font-family: 'Mulish', 'sans-serif';
     font-size: 1.375rem;
     transition: all .2s;
- 
+
 }
 
 .Input-Invalid {

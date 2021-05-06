@@ -49,7 +49,7 @@ const Camp = props => {
                 <div className = 'details'>
                     <h3><i className ="fas fa-map-marker-alt"></i> { props.location }</h3>
                 </div>
-                <img src = { image } width = '100%' height = '100%' />
+                <img src = { image } alt = "campImage" width = '100%' height = '100%' />
             </div>
         </div>
     )

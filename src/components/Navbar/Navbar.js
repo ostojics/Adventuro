@@ -6,7 +6,7 @@ import './Navbar.scss';
 
 const Navbar = props => {
     const { pathname } = useLocation();
-    const [navLinks, setNavLink] = useState([
+    const [ navLinks ] = useState([
         { to: '/', text: 'Home'},
         { to: '/camps', text: 'Camps'},
         { to: '/testimonials', text: 'Testimonials'}
@@ -31,8 +31,8 @@ const Navbar = props => {
              <ul className = { `mobile-menu` } style = { navMenu ? {transform: 'translateX(0)'} : {transform: 'translateX(-100%)'} }>
                 { navLinks.map(link => {
                     return (
-                    <li>
-                        <NavLink className='link'  to={ link.to } activeClassName='link-active' exact>{ link.text }</NavLink> 
+                    <li key={ link.text }>
+                        <NavLink className='link' to={ link.to } activeClassName='link-active' exact>{ link.text }</NavLink> 
                     </li>
                     )
                 }) }
@@ -48,20 +48,20 @@ const Navbar = props => {
                 <div className = 'logo'>
                     <h1>Adventuro</h1>
                 </div>
-                { !hamburgerClicked ? <i class="fas fa-bars" onClick = { navIconClickedHandler }></i> : <i class="fas fa-times" onClick = { navIconClickedHandler }></i> }
+                { !hamburgerClicked ? <i className="fas fa-bars" onClick = { navIconClickedHandler }></i> : <i class="fas fa-times" onClick = { navIconClickedHandler }></i> }
                 <ul className = 'links'>
                     { navLinks.map(link => {
                         return (
-                        <li>
+                        <li key={ link.text }>
                             <NavLink className='link'  to={ link.to } activeClassName='link-active' exact>{ link.text }</NavLink> 
                         </li>
                         )
                     }) }
                     <li>
                         { isAuthenticated ? (
-                            <NavLink className='link link-auth' to = '/logout' exact>Sign Out</NavLink> 
+                            <NavLink className='link-auth' to = '/logout' exact>Sign Out</NavLink> 
                         ) : (
-                            <NavLink className='link link-auth' to = '/auth' exact onClick = { onAuthRedirect }>Sign In</NavLink> 
+                            <NavLink className='link-auth' to = '/auth' exact onClick = { onAuthRedirect }>Sign In</NavLink> 
                         ) }
                     </li>       
                 </ul>

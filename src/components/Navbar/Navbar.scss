@@ -88,27 +88,35 @@
         font-size: 0.9375rem;
     }
 
-    &-auth {
-        padding: 0.3125rem 1.875rem;
-        border: 1px solid $color-white;
-        border-radius: 15px;
-
-        &:hover {
-            background-color: $color-white;
-            color: $bg-color-secondary;
-        }
-
-        @include respond(tablet) {
-            padding: 0.3125rem 2.5rem;
-        }
-    }
-
     &-active {
         border-bottom: 1px solid $color-white;
     }
 
     &:hover {
         border-bottom: 1px solid $color-white;
+    }
+}
+
+.link-auth {
+    color: $color-white;
+    font-size: 0.9375rem;
+    font-family: 'Mulish', 'sans-serif';
+    font-weight: 400;
+    text-decoration: none;
+    transition: all .2s;
+    padding: 8px 35px;
+    background-color: #cb2d3e;
+    border: none;
+    border-radius: 20px;
+    color: $color-white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken(#cb2d3e, 10%);
+    }
+
+    @include respond(tablet) {
+        padding: 0.3125rem 2.5rem;
     }
 }
 

@@ -23,7 +23,7 @@ const errorMessage = props => {
     }
 
     return (
-        <p className='ErrorMessage text-center'>{ errorMessage }</p>
+        <p className='errorMessage'>{ errorMessage }</p>
     )
 }
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-import React, { useEffect, Suspense, Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect, Suspense } from 'react';
+import { Route } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Camps from './containers/Camps/Camps';
 import CampDescription from './components/CampDescription/CampDescription';
@@ -22,7 +22,7 @@ const Logout = React.lazy(() => {
 const App = props => {
   useEffect(() => {
     props.onTryAutoSignUp();
-  }, [])
+  }, [props])
 
   const routes = (
     <ScrollToTop>
