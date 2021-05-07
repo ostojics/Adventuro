@@ -1,0 +1,53 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.InvalidPageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    &-icon {
+        height: 80vh;
+
+        @include respond(mobile-L) {
+            height: 60vh;
+        }
+
+        @include respond(mobile-S) {
+            height: 45vh;
+        }
+
+    }
+
+    &-button {
+        width: 10%;
+        margin: 0 auto;
+        margin-top: 2rem;
+        border: none;
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+        border-radius: 0.625rem;
+        background-color: $text-primary;
+        color: $bg-color;
+        font-family: 'Poppins', 'sans-serif';
+        transition: all .2s;
+
+        &:hover {
+            transform: translateY(-3px);
+            cursor: pointer;
+        }
+
+        @include respond(tablet) {
+            width: 20%;
+        }
+
+        @include respond(mobile-L) {
+            width: 30%;
+        }
+
+        @include respond(mobile-M) {
+            width: 40%;
+        }
+    }
+}
