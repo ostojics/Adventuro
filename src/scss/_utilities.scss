@@ -15,7 +15,12 @@
         }   
         
         @include respond(tablet) {
-            font-size: 2.375rem;
+            font-size: 4.2rem;
+            text-align: center;
+        }
+
+        @include respond(big-mobile) {
+            font-size: 3rem;
         }
         
         @include respond(mobile-L) {
@@ -23,7 +28,7 @@
         }
 
         @include respond(mobile-S) {
-            font-size: 1.5625rem;
+            font-size: 1.875rem;
         }
     }
 
@@ -106,7 +111,12 @@
         }
 
         @include respond(tablet) {
-            font-size: 1rem;
+            font-size: 2rem;
+        }
+
+        @include respond(big-mobile) {
+            font-size: 1.2rem;
+            text-align: center;
         }
 
         @include respond(mobile-L) {
@@ -114,7 +124,7 @@
         }
 
         @include respond(mobile-S) {
-            font-size: 0.625rem;
+            font-size: 0.75rem;
         }
     }
 }

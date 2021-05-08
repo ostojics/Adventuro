@@ -24,12 +24,16 @@
             }
 
             @include respond(tablet) {
-                height: 40vh;
+                height: 60vh;
                 margin-top: 2.8125rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
 
             @include respond(mobile-L) {
-                height: 35vh;
+                height: 45vh;
                 margin-top: 3.125rem;
             }
 
@@ -73,6 +77,10 @@
                 padding: 0.9375rem 5rem; 
             }
 
+            @include respond(tablet) {
+                font-size: 1.3rem;
+                padding: 1.25rem 5.625rem; 
+            }
 
             @include respond(mobile-L) {
                 font-size: 0.8125rem;
@@ -117,16 +125,19 @@
 }
 
 .buttons {
-    width: 40%;
+    width: 45%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 4.375rem auto;
+
+    @include respond(laptop) {
+        width: 60%;
+    }
 
     @include respond(tablet) {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 60%;
 
         .primary {
             order: 1;
@@ -139,6 +150,10 @@
         .primary, .ghost {
             width: 100%;
         }
+    }
+
+    @include respond(big-mobile) {
+        width: 70%;
     }
 
     @include respond(mobile-L) {
