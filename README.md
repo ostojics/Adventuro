@@ -15,3 +15,7 @@ Authentication, testimonials, categories based selection system, test payment wi
 Clone the project with git clone https://github.com/ostojics/Adventuro
 cd into the directory, npm install then npm start
 
+### Attribution 
+
+Home page hero image created by upklyak - www.freepik.com
+
