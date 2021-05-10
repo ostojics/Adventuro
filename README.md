@@ -4,7 +4,7 @@ A website for a fictional tours company.
 
 ## Technologies used
 
-React.js with Redux, Stripe, Firebase, styled-components.
+React.js with Redux, Stripe, Firebase, styled-components, SCSS
 
 ### Features
 
