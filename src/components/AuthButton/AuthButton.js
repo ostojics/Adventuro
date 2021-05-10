@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledAuthButton } from '../../StyledComponents/StyledComponents';
+import { StyledAuthButton } from '../StyledComponents/StyledComponents';
 
 const authButton = props => {
 
