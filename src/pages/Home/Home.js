@@ -1,7 +1,7 @@
 
 import React, { useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CtaButton from '../../components/CtaButton/CtaButton';
+import CtaButton from '../../components/Buttons/CtaButton/CtaButton';
 import Options from '../../components/Options/Options';
 import Navbar from '../../components/Navbar/Navbar';
 import './Home.scss';

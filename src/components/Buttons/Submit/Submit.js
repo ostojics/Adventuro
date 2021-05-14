@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledSubmit } from '../StyledComponents/StyledComponents';
+import { StyledSubmit } from '../../StyledComponents/StyledComponents';
 
 
 const submit = props => (

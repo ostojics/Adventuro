@@ -2,8 +2,8 @@ import React, { useState, Fragment, useEffect } from 'react';
 import './Testimonials.scss';
 import Navbar from '../../components/Navbar/Navbar';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
-import FormElement from '../../components/FormElement/FormElement';
-import Submit from '../../components/Submit/Submit';
+import FormElement from '../../components/FormsComponents/FormElement/FormElement';
+import Submit from '../../components/Buttons/Submit/Submit';
 import Loader from '../../components/UI/Loader/Loader';
 import axios from '../../axios-databaseApi';
 
