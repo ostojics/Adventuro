@@ -4,3 +4,5 @@ export const updateObject = (oldObject, updatedProperties) => {
         ...updatedProperties
     };
 };
+
+export const deepClone = (object) => JSON.parse(JSON.stringify(object));
