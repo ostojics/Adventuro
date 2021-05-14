@@ -3,8 +3,8 @@ import './Auth.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Arrow } from '../../icons/arrow.svg';
 
-import AuthInput from '../../components/AuthInput/AuthInput';
-import AuthButton from '../../components/AuthButton/AuthButton';
+import AuthInput from '../../components/FormsComponents/AuthInput/AuthInput';
+import AuthButton from '../../components/Buttons/AuthButton/AuthButton';
 import * as actions from '../../store/actions/index';
 import Loader from '../../components/UI/Loader/Loader';
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';

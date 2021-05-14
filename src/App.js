@@ -2,18 +2,18 @@ import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
 import React, { useEffect, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './containers/Home/Home';
-import Camps from './containers/Camps/Camps';
+import Home from './pages/Home/Home';
+import Camps from './pages/Camps/Camps';
 import CampDescription from './components/CampDescription/CampDescription';
 import ScrollToTop from './scrollToTop';
 import InvalidPageComponent from './components/InvalidPageComponent/InvalidPageComponent';
 
 const Testimonials = React.lazy(() => {
-  return import('./containers/Testimonials/Testimonials');
+  return import('./pages/Testimonials/Testimonials');
 })
 
 const Auth = React.lazy(() => {
-  return import('./containers/Auth/Auth');
+  return import('./pages/Auth/Auth');
 })
 
 const Logout = React.lazy(() => {
