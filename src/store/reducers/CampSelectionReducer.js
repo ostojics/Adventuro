@@ -1,3 +1,5 @@
+import { deepClone } from '../utility';
+
 const initialState = {
     campsData: [
 
@@ -116,7 +118,7 @@ const initialState = {
 const campSelectionReducer = (state = initialState, action) => {
     switch( action.type ) {
         case 'OPTION_SELECTED':
-            let campsSelection = [...state.selectedCamps];
+            let campsSelection = deepClone(state.selectedCamps);
             for(let group of state.campsData) {
                 if(group.title === action.optName) {
                     campsSelection.push(group);
@@ -130,7 +132,7 @@ const campSelectionReducer = (state = initialState, action) => {
             }
 
         case 'OPTION_DESELECTED':
-            let currentCampsSelection = JSON.parse(JSON.stringify(state.selectedCamps));
+            let currentCampsSelection = deepClone(state.selectedCamps);
             let filteredCampsSelection = currentCampsSelection.filter(group => {
                 return group.title !== action.optName;
             })
@@ -143,7 +145,7 @@ const campSelectionReducer = (state = initialState, action) => {
             }
 
         case 'DONE_CLICK':
-            let currentSelection = JSON.parse(JSON.stringify(state.selectedCamps));
+            let currentSelection = deepClone(state.selectedCamps);
             return {
                 ...state,
                 campsRenderData: [ ...currentSelection ],
@@ -153,7 +155,7 @@ const campSelectionReducer = (state = initialState, action) => {
             }
 
         case 'SKIP_CLICK':
-            let campsToRender = JSON.parse(JSON.stringify(state.campsData));
+            let campsToRender = deepClone(state.selectedCamps);
             return {
                 ...state,
                 campsRenderData: [ ...campsToRender ],
