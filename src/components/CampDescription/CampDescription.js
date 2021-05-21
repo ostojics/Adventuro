@@ -100,7 +100,7 @@ const CampDescription = props => {
                     </div>
                 </div>
                 { isAuthenticated && (
-                    <Elements stripe={stripePromise} options={ ELEMENTS_OPTIONS }>
+                    <Elements stripe={ stripePromise } options={ ELEMENTS_OPTIONS }>
                         <CheckoutForm email = { userEmail } price = { details.price }/>
                     </Elements>
                 ) }

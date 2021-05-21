@@ -10,8 +10,6 @@ const campGroup = props => {
                 { props.camps.map(camp => {
                     return <Camp 
                     key = { camp.id }
-                    name = { camp.name }
-                    shortDescription = { camp.shortDescription }
                     imageName = { camp.image }
                     location = { camp.location }
                     clicked = { props.clicked }
