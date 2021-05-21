@@ -80,7 +80,7 @@ const Testimonials = props => {
             setTestimonialsLoading(false);
             setTestimonials(fetchedTestimonials);
         }).catch(error => {
-            console.log(error);
+            setTestimonialsLoading(false);
         })
     }, [])
 
@@ -156,7 +156,7 @@ const Testimonials = props => {
                 window.location.reload();
             } )
             .catch( error => {
-               console.log(error);
+                setFormLoading(false);
             } );
     }
 
