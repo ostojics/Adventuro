@@ -8,7 +8,7 @@ React.js with Redux, Stripe, Firebase, styled-components, SCSS
 
 ### Features
 
-Authentication, testimonials, categories based selection system, test payment with Stripe and more!
+Authentication, testimonials, test payment with Stripe and more!
 
 ### Usage
 
