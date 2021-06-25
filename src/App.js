@@ -35,7 +35,7 @@ const App = props => {
           <Route path = '/auth' component = { Auth }/>
           <Route path = '/logout' component = { Logout } />
           <Route path='*' exact component = { InvalidPageComponent } />
-        </Switch>
+      </Switch>
     </ScrollToTop>
   
   )    

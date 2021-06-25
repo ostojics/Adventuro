@@ -3,7 +3,7 @@ const initialState = {
 }
 
 const campDetailsReducer = (state = initialState, action) => {
-    switch( action.type ) {
+    switch(action.type) {
         case 'CAMP_CLICK':
             return {
                 ...state,

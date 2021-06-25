@@ -116,8 +116,8 @@ const initialState = {
 }
 
 const campSelectionReducer = (state = initialState, action) => {
-    switch( action.type ) {
-        case 'OPTION_SELECTED':
+    switch(action.type) {
+        case 'OPTION_SELECTED': {
             let campsSelection = deepClone(state.selectedCamps);
             for(let group of state.campsData) {
                 if(group.title === action.optName) {
@@ -130,10 +130,12 @@ const campSelectionReducer = (state = initialState, action) => {
                 selectedCamps: campsSelection,
                 optionsSelectedNum: updatedOptionsSelectedNumber
             }
+        }
+            
 
-        case 'OPTION_DESELECTED':
-            let currentCampsSelection = deepClone(state.selectedCamps);
-            let filteredCampsSelection = currentCampsSelection.filter(group => {
+        case 'OPTION_DESELECTED': {
+            let campsSelection = deepClone(state.selectedCamps);
+            let filteredCampsSelection = campsSelection.filter(group => {
                 return group.title !== action.optName;
             })
             const updatedOptionsSelectedNum = state.optionsSelectedNum - 1;
@@ -143,26 +145,32 @@ const campSelectionReducer = (state = initialState, action) => {
                 selectedCamps: filteredCampsSelection,
                 optionsSelectedNum: updatedOptionsSelectedNum
             }
+        }
+           
 
-        case 'DONE_CLICK':
-            let currentSelection = deepClone(state.selectedCamps);
+        case 'DONE_CLICK': {
+            let campsSelection = deepClone(state.selectedCamps);
             return {
                 ...state,
-                campsRenderData: [ ...currentSelection ],
+                campsRenderData: [ ...campsSelection ],
                 selectedCamps: [],
                 categoriesSelected: true,
                 optionsSelectedNum: 0
             }
+        }
+            
 
-        case 'SKIP_CLICK':
-            let campsToRender = deepClone(state.selectedCamps);
+        case 'SKIP_CLICK': {
+            let campsSelection = deepClone(state.selectedCamps);
             return {
                 ...state,
-                campsRenderData: [ ...campsToRender ],
+                campsRenderData: [ ...campsSelection ],
                 selectedCamps: [],
                 categoriesSelected: false,
                 optionsSelectedNum: 0
             }
+        }
+            
 
         default: 
             return state;

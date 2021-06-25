@@ -7,8 +7,6 @@ import {ReactComponent as CampIcon} from '../../../icons/tent.svg';
 import {ReactComponent as BikeIcon} from '../../../icons/road-bike.svg';
 import {ReactComponent as MountainIcon} from '../../../icons/mountains.svg';
 
-
-
 const Option = props => {
     const [clicked, setClicked] = useState(false);
 
