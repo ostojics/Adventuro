@@ -7,7 +7,7 @@ A website for a fictional tours company.
 React.js with Redux <br />
 Stripe <br /> 
 Firebase <br /> 
-Styled-components <br /> 
+Styled-Components <br /> 
 SCSS <br />
 
 ### Features
