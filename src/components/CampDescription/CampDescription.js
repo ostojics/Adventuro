@@ -13,6 +13,7 @@ import climb1 from '../../images/climb1.jpg';
 import climb2 from '../../images/climb2.jpg';
 import ride1 from '../../images/ride1.jpg';
 import ride2 from '../../images/ride2.jpg';
+
 import { ReactComponent as ArrowIcon} from '../../icons/arrow.svg';
 import CheckoutForm from '../Stripe/StripeButton/StripeCheckout';
 

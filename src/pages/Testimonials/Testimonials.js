@@ -150,12 +150,12 @@ const Testimonials = props => {
             ...formData
         }
 
-        axios.post( 'testimonials.json', testimonial )
-            .then( response => {
+        axios.post('testimonials.json', testimonial)
+            .then(response => {
                 setFormLoading(false);
                 window.location.reload();
             } )
-            .catch( error => {
+            .catch(error => {
                 setFormLoading(false);
             } );
     }

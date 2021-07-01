@@ -1,6 +1,7 @@
 import React from 'react';
 import Camp from './Camp/Camp';
 import './CampGroup.scss';
+
 const campGroup = props => {
 
     return(

@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
+
 import { StyledOptionCard } from '../../StyledComponents/StyledComponents';
 import './Option.scss';
+
 import {ReactComponent as KayakIcon} from '../../../icons/kayak.svg';
 import {ReactComponent as CampIcon} from '../../../icons/tent.svg';
 import {ReactComponent as BikeIcon} from '../../../icons/road-bike.svg';

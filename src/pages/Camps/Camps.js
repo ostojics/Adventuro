@@ -4,10 +4,13 @@ import CampGroup from '../../components/CampGroup/CampGroup';
 import Navbar from '../../components/Navbar/Navbar';
 import './Camps.scss';
 
-const Camp = props => {
-
+const Camps = props => {
     const dispatch = useDispatch();
     const onCampClick = (campDetails) => dispatch({ type: 'CAMP_CLICK', payload: campDetails });
+
+    const campClickHandler = () => {
+        props.history.push(`${props.match.path}/camp`);
+    }
 
     const selectedCampsData = useSelector(state => {
         return state.campSlc.campsRenderData
@@ -20,10 +23,6 @@ const Camp = props => {
     const categoriesAreSelected = useSelector(state => {
         return state.campSlc.categoriesSelected 
     })
-
-    const campClickHandler = () => {
-        props.history.push(`${props.match.path}/camp`);
-    }
     
     let renderData = null;
     if(categoriesAreSelected) {
@@ -60,4 +59,4 @@ const Camp = props => {
 }
 
 
-export default (React.memo(Camp));
+export default (React.memo(Camps));
